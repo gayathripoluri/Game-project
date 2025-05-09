@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://c3almonomnu1c"]
 
 [ext_resource type="Texture2D" uid="uid://bnrmijhnybo1v" path="res://assets/sunny-land/assets/environment/tileset.png" id="1_036b0"]
-[ext_resource type="Script" uid="uid://vjk4dw6ikbto" path="res://bg.gd" id="1_aqk2v"]
-[ext_resource type="PackedScene" uid="uid://dq1fk0706myox" path="res://Player/player.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://vjk4dw6ikbto" path="res://Bg/bg.gd" id="1_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://btxn7a1u8aa7t" path="res://Player/player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://co03amee61wpm" path="res://assets/Bg/Forest.png" id="3_aqk2v"]
-[ext_resource type="Texture2D" uid="uid://cng83a57hrowa" path="res://assets/Bg/Back(3).png" id="4_036b0"]
+[ext_resource type="Texture2D" uid="uid://cng83a57hrowa" path="res://assets/Bg/Beautiful Forest.png" id="4_036b0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
 texture = ExtResource("1_036b0")

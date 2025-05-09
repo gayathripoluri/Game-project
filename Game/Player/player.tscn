@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dq1fk0706myox"]
+[gd_scene load_steps=17 format=3 uid="uid://btxn7a1u8aa7t"]
 
 [ext_resource type="Script" uid="uid://c3hvcs7nrtqdq" path="res://Player/player.gd" id="1_p5o4e"]
 [ext_resource type="Texture2D" uid="uid://bwoub8382f0yw" path="res://assets/Hero/Hero.png" id="2_apopc"]
@@ -241,6 +241,7 @@ flip_h = true
 position = Vector2(-4, 5)
 zoom = Vector2(1.4, 1.4)
 limit_left = 0
+limit_top = 100
 limit_right = 4000
 limit_bottom = 600
 
