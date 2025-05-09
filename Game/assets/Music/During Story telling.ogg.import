@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bo370hpenudli"
+path="res://.godot/imported/During Story telling.ogg-e1b1094458a83d7a12f418588569aa23.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Music/During Story telling.ogg"
+dest_files=["res://.godot/imported/During Story telling.ogg-e1b1094458a83d7a12f418588569aa23.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

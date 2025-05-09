@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://i07atjsqj1i3"
+path="res://.godot/imported/Maniac.ogg-a1225d821fb600611a04e7711bd4794d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Music/adventure pack 2 ogg/Maniac.ogg"
+dest_files=["res://.godot/imported/Maniac.ogg-a1225d821fb600611a04e7711bd4794d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

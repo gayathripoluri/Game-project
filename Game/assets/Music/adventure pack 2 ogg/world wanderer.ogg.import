@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cufba3lgk0ire"
+path="res://.godot/imported/world wanderer.ogg-da1444ea2861ba391e3891caf2a442e7.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Music/adventure pack 2 ogg/world wanderer.ogg"
+dest_files=["res://.godot/imported/world wanderer.ogg-da1444ea2861ba391e3891caf2a442e7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
