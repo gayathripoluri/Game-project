@@ -1,0 +1,108 @@
+[gd_scene load_steps=17 format=3 uid="uid://bvdjl1235ryg0"]
+
+[ext_resource type="Script" uid="uid://ntyege5msv77" path="res://wolf.gd" id="1_vps75"]
+[ext_resource type="Texture2D" uid="uid://c3hgc806myoug" path="res://assets/Enemy/Wolf/Attack/attack.png" id="1_vyeuo"]
+[ext_resource type="Texture2D" uid="uid://e4rk6l2po735" path="res://assets/Enemy/Wolf/Attack/attack2.png" id="2_p5yqe"]
+[ext_resource type="Texture2D" uid="uid://cpmvpytwwqmcj" path="res://assets/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/spritesheet.png" id="3_p5yqe"]
+[ext_resource type="Texture2D" uid="uid://d3rpwqx4jttrx" path="res://assets/Enemy/Wolf/Idle/Idle1.png" id="3_vps75"]
+[ext_resource type="Texture2D" uid="uid://rwulc7w18xqc" path="res://assets/Enemy/Wolf/Idle/idle2.png" id="4_2mbod"]
+[ext_resource type="Texture2D" uid="uid://cbh4lfyfohdsw" path="res://assets/Enemy/Wolf/Walk/walk1.png" id="5_bj861"]
+[ext_resource type="Texture2D" uid="uid://i2q0a8kjbrd1" path="res://assets/Enemy/Wolf/Walk/walk2.png" id="6_v01s4"]
+[ext_resource type="Texture2D" uid="uid://d1iictsqc7t1" path="res://assets/Enemy/Wolf/Walk/walk3.png" id="7_dj4q7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mbod"]
+size = Vector2(76, 38.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vps75"]
+atlas = ExtResource("3_p5yqe")
+region = Rect2(0, 0, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mbod"]
+atlas = ExtResource("3_p5yqe")
+region = Rect2(28, 0, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj861"]
+atlas = ExtResource("3_p5yqe")
+region = Rect2(56, 0, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v01s4"]
+atlas = ExtResource("3_p5yqe")
+region = Rect2(84, 0, 28, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8oaq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vyeuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p5yqe")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vps75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mbod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bj861")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v01s4")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vps75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2mbod")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bj861")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v01s4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dj4q7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj861"]
+radius = 73.6817
+
+[node name="Wolf" type="CharacterBody2D"]
+script = ExtResource("1_vps75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -20.25)
+shape = SubResource("RectangleShape2D_2mbod")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -14)
+sprite_frames = SubResource("SpriteFrames_8oaq4")
+animation = &"walk"
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_bj861")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]

@@ -231,10 +231,10 @@ position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_8mwp6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1)
-scale = Vector2(0.61522, 0.707194)
+position = Vector2(-1, -8)
+scale = Vector2(0.788425, 0.906124)
 sprite_frames = SubResource("SpriteFrames_sm0op")
-animation = &"Idle"
+animation = &"jump"
 flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
