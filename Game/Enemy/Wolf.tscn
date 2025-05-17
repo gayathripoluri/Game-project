@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvdjl1235ryg0"]
+[gd_scene load_steps=19 format=3 uid="uid://bvdjl1235ryg0"]
 
-[ext_resource type="Script" uid="uid://ntyege5msv77" path="res://wolf.gd" id="1_vps75"]
+[ext_resource type="Script" uid="uid://ntyege5msv77" path="res://Enemy/wolf.gd" id="1_vps75"]
 [ext_resource type="Texture2D" uid="uid://c3hgc806myoug" path="res://assets/Enemy/Wolf/Attack/attack.png" id="1_vyeuo"]
 [ext_resource type="Texture2D" uid="uid://e4rk6l2po735" path="res://assets/Enemy/Wolf/Attack/attack2.png" id="2_p5yqe"]
 [ext_resource type="Texture2D" uid="uid://cpmvpytwwqmcj" path="res://assets/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/spritesheet.png" id="3_p5yqe"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d1iictsqc7t1" path="res://assets/Enemy/Wolf/Walk/walk3.png" id="7_dj4q7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mbod"]
-size = Vector2(76, 38.5)
+size = Vector2(59, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vps75"]
 atlas = ExtResource("3_p5yqe")
@@ -55,9 +55,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v01s4")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -86,23 +86,46 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj861"]
-radius = 73.6817
+radius = 139.589
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vps75"]
+size = Vector2(40.1367, 8.5625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bj861"]
+size = Vector2(59.5, 30)
 
 [node name="Wolf" type="CharacterBody2D"]
 script = ExtResource("1_vps75")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -20.25)
+position = Vector2(2.5, -14)
 shape = SubResource("RectangleShape2D_2mbod")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -14)
+position = Vector2(2, -15)
+scale = Vector2(0.955882, 1.01515)
 sprite_frames = SubResource("SpriteFrames_8oaq4")
-animation = &"walk"
+animation = &"idle"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(-1, 2)
 shape = SubResource("CircleShape2D_bj861")
 
+[node name="PlayerDeath" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath"]
+position = Vector2(274, -125)
+shape = SubResource("RectangleShape2D_vps75")
+
+[node name="PlayerCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
+position = Vector2(2.25, -15)
+shape = SubResource("RectangleShape2D_bj861")
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]
+[connection signal="body_entered" from="PlayerCollision" to="." method="_on_player_collision_body_entered"]
