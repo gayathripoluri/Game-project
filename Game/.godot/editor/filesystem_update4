@@ -1,5 +1,8 @@
+res://Enemy/Wolf.tscn
+res://Player/player.gd
+res://Enemy/wolf.gd
+res://gameEnd.tscn
 res://Main/main.tscn
 res://Player/player.tscn
 res://Bg/bg.tscn
-res://world.tscn
-res://Wolf.tscn
+res://World/world.tscn

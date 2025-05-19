@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg677cyfgp0dl"]
+
+[ext_resource type="Script" uid="uid://cx02sbkqg1e5v" path="res://End.gd" id="1_dus1c"]
+
+[node name="Label" type="Label"]
+offset_left = 109.0
+offset_top = 78.0
+offset_right = 707.0
+offset_bottom = 127.0
+text = "You Died
+"
+script = ExtResource("1_dus1c")
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 96.0
+offset_right = 496.0
+offset_bottom = 188.0
+text = "Retry
+"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.44
+anchor_right = 0.44
+offset_left = -12.12
+offset_top = 269.0
+offset_right = 304.88
+offset_bottom = 376.0
+text = "Quit
+"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

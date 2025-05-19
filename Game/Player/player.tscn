@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bse2vvv23wpxc" path="res://assets/Hero/jump2.png" id="4_k53q1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mwp6"]
-radius = 16.0
-height = 56.0
+radius = 8.0
+height = 52.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gu6f8"]
 atlas = ExtResource("2_apopc")
@@ -231,14 +231,14 @@ position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_8mwp6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -8)
-scale = Vector2(0.788425, 0.906124)
+position = Vector2(-2, -10)
+scale = Vector2(0.777191, 0.906124)
 sprite_frames = SubResource("SpriteFrames_sm0op")
-animation = &"jump"
+animation = &"Idle"
 flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-4, 5)
+position = Vector2(0, -1)
 zoom = Vector2(1.4, 1.4)
 limit_left = 0
 limit_top = 100

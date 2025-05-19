@@ -1,7 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1747517151
+::res://::1747604084
+End.gd::GDScript::6440465786714830673::1747549703::0::1::::<>Control<><>0<>0<><>::
+gameEnd.tscn::PackedScene::2873549687428451917::1747549869::0::1::::<><><>0<>0<><>::uid://cx02sbkqg1e5v::::res://End.gd
 icon.svg::CompressedTexture2D/CompressedTexture2D::6660593648530901789::1745032365::1745032372::1::::<><><>0<>0<>980eede5dc1fac15010fdf771b0a78a8<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-world.tscn::PackedScene::6738819061760425070::1747517151::0::1::::<><><>0<>0<><>::uid://bnrmijhnybo1v::::res://assets/sunny-land/assets/environment/tileset.png<>uid://vjk4dw6ikbto::::res://Bg/bg.gd<>uid://btxn7a1u8aa7t::::res://Player/player.tscn<>uid://bso4xef7c7ymn::::res://World/world.gd<>uid://co03amee61wpm::::res://assets/Bg/Forest.png<>uid://cng83a57hrowa::::res://assets/Bg/Beautiful Forest.png<>uid://bvdjl1235ryg0::::res://Enemy/Wolf.tscn
 ::res://assets/::1746561051
 ::res://assets/Bg/::1746765563
 Beautiful Forest.png::CompressedTexture2D/CompressedTexture2D::5699736312003717660::1746636545::1746765534::1::::<><><>0<>0<>3fda9fcc4c84918903d9c25caaf5c5d9<>res://.godot/imported/Beautiful Forest.png-38c82ba027c3542a9b1fe01603f34950.ctex::
@@ -1255,17 +1256,18 @@ instructions.png::CompressedTexture2D/CompressedTexture2D::585277713222909560::1
 loading.png::CompressedTexture2D/CompressedTexture2D::4690382186442470077::1745032808::1746330758::1::::<><><>0<>0<>01f68a782b8d288c6a664a326d89be88<>res://.godot/imported/loading.png-18970c732f5b6720f6979083078ec0ff.ctex::
 press-enter-text.png::CompressedTexture2D/CompressedTexture2D::678429492895881203::1745032808::1746330758::1::::<><><>0<>0<>46f6c3f6350612857f55475427714ecc<>res://.godot/imported/press-enter-text.png-54236de384aa46e58a2e37690bfde143.ctex::
 title-screen.png::CompressedTexture2D/CompressedTexture2D::2512829946792491702::1745032808::1746330758::1::::<><><>0<>0<>dda79d6571c1941abab8b9b059548614<>res://.godot/imported/title-screen.png-f42ed67324f2eb42158a789f08832261.ctex::
-::res://Bg/::1747516918
+::res://Bg/::1747549868
 bg.gd::GDScript/GDScript::1493204267111455944::1745208205::0::1::::<>ParallaxBackground<><>0<>0<><>::
-bg.tscn::PackedScene/PackedScene::3367648040843266771::1747516918::0::1::::<><><>0<>0<><>::uid://vjk4dw6ikbto::::res://Bg/bg.gd<>uid://jc1n678ndpve::::res://assets/Bg/Title Card With Bg.jpg
-::res://Enemy/::1747517129
-wolf.gd::GDScript/GDScript::953142818322721604::1747366662::0::1::::<>CharacterBody2D<><>0<>0<><>::
-Wolf.tscn::PackedScene::3867147038651613549::1747517121::0::1::::<><><>0<>0<><>::uid://ntyege5msv77::::res://Enemy/wolf.gd<>uid://c3hgc806myoug::::res://assets/Enemy/Wolf/Attack/attack.png<>uid://e4rk6l2po735::::res://assets/Enemy/Wolf/Attack/attack2.png<>uid://cpmvpytwwqmcj::::res://assets/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/spritesheet.png<>uid://d3rpwqx4jttrx::::res://assets/Enemy/Wolf/Idle/Idle1.png<>uid://rwulc7w18xqc::::res://assets/Enemy/Wolf/Idle/idle2.png<>uid://cbh4lfyfohdsw::::res://assets/Enemy/Wolf/Walk/walk1.png<>uid://i2q0a8kjbrd1::::res://assets/Enemy/Wolf/Walk/walk2.png<>uid://d1iictsqc7t1::::res://assets/Enemy/Wolf/Walk/walk3.png
-::res://Main/::1747516918
-main.gd::GDScript/GDScript::7947174950483153360::1745208400::0::1::::<>Node2D<><>0<>0<><>::
-main.tscn::PackedScene/PackedScene::5061197387992540729::1747516918::0::1::::<><><>0<>0<><>::uid://dlhw2s0rnpdp5::::res://Main/main.gd<>uid://bn8kw26mkfu1h::::res://Bg/bg.tscn
-::res://Player/::1747516918
-player.gd::GDScript/GDScript::6753859257433620350::1747366662::0::1::::<>CharacterBody2D<><>0<>0<><>::
-player.tscn::PackedScene/PackedScene::3768335908587735395::1747516918::0::1::::<><><>0<>0<><>::uid://c3hvcs7nrtqdq::::res://Player/player.gd<>uid://bwoub8382f0yw::::res://assets/Hero/Hero.png<>uid://cusxlytia7175::::res://assets/Hero/dead.png<>uid://bse2vvv23wpxc::::res://assets/Hero/jump2.png
-::res://World/::1747517151
-world.gd::GDScript::3680523243059875685::1747366686::0::1::::<>Node2D<><>0<>0<><>::
+bg.tscn::PackedScene::3367648040843266771::1747549868::0::1::::<><><>0<>0<><>::uid://vjk4dw6ikbto::::res://Bg/bg.gd<>uid://jc1n678ndpve::::res://assets/Bg/Title Card With Bg.jpg
+::res://Enemy/::1747550634
+wolf.gd::GDScript::953142818322721604::1747550634::0::1::::<>CharacterBody2D<><>0<>0<><>::
+Wolf.tscn::PackedScene::3867147038651613549::1747549869::0::1::::<><><>0<>0<><>::uid://ntyege5msv77::::res://Enemy/wolf.gd<>uid://c3hgc806myoug::::res://assets/Enemy/Wolf/Attack/attack.png<>uid://e4rk6l2po735::::res://assets/Enemy/Wolf/Attack/attack2.png<>uid://cpmvpytwwqmcj::::res://assets/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/spritesheet.png<>uid://d3rpwqx4jttrx::::res://assets/Enemy/Wolf/Idle/Idle1.png<>uid://rwulc7w18xqc::::res://assets/Enemy/Wolf/Idle/idle2.png<>uid://cbh4lfyfohdsw::::res://assets/Enemy/Wolf/Walk/walk1.png<>uid://i2q0a8kjbrd1::::res://assets/Enemy/Wolf/Walk/walk2.png<>uid://d1iictsqc7t1::::res://assets/Enemy/Wolf/Walk/walk3.png
+::res://Main/::1747549868
+main.gd::GDScript::7947174950483153360::1747517772::0::1::::<>Node2D<><>0<>0<><>::
+main.tscn::PackedScene::5061197387992540729::1747549868::0::1::::<><><>0<>0<><>::uid://dlhw2s0rnpdp5::::res://Main/main.gd<>uid://bn8kw26mkfu1h::::res://Bg/bg.tscn
+::res://Player/::1747549868
+player.gd::GDScript::6753859257433620350::1747549427::0::1::::<>CharacterBody2D<><>0<>0<><>::
+player.tscn::PackedScene::3768335908587735395::1747549868::0::1::::<><><>0<>0<><>::uid://c3hvcs7nrtqdq::::res://Player/player.gd<>uid://bwoub8382f0yw::::res://assets/Hero/Hero.png<>uid://cusxlytia7175::::res://assets/Hero/dead.png<>uid://bse2vvv23wpxc::::res://assets/Hero/jump2.png
+::res://World/::1747549869
+world.gd::GDScript::3680523243059875685::1747549868::0::1::::<>Node2D<><>0<>0<><>::
+world.tscn::PackedScene::6738819061760425070::1747549869::0::1::::<><><>0<>0<><>::uid://bso4xef7c7ymn::::res://World/world.gd<>uid://bnrmijhnybo1v::::res://assets/sunny-land/assets/environment/tileset.png<>uid://vjk4dw6ikbto::::res://Bg/bg.gd<>uid://co03amee61wpm::::res://assets/Bg/Forest.png<>uid://cng83a57hrowa::::res://assets/Bg/Beautiful Forest.png<>uid://btxn7a1u8aa7t::::res://Player/player.tscn<>uid://bvdjl1235ryg0::::res://Enemy/Wolf.tscn

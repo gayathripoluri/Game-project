@@ -4,6 +4,7 @@ var SPEED = 90
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player
 var chase = false
+var player_in_contact = null
 func _ready():
 	get_node("AnimatedSprite2D").play("idle")
 func _physics_process(delta):
@@ -40,12 +41,26 @@ func _on_player_death_body_entered(body):
 
 func _on_player_collision_body_entered(body: Node2D) -> void:
 	if body.name == "player":
-		body.health-=3
-		death()
-		
-		
+		var is_above = body.global_position.y < global_position.y - 10
+		var is_falling = body.velocity.y > 0
+
+		if is_above and is_falling:
+			# ✅ Player stomped enemy
+			print("☠️ Enemy stomped!")
+			body.velocity.y = -200
+			death()
+		else:
+			# ❌ Player got hit → take damage, enemy stays alive
+			if body.has_method("take_damage"):
+				body.take_damage(3)
+				print("⚠️ Player hit by enemy. HP:", body.health)
+
 func death():
 	chase = false
 	get_node("AnimatedSprite2D").play("death")
 	await get_node("AnimatedSprite2D").animation_finished
 	self.queue_free()
+
+
+func _on_damage_timer_timeout() -> void:
+	pass # Replace with function body.

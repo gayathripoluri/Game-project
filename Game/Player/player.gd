@@ -2,30 +2,32 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-# Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim = get_node("AnimationPlayer")
+var health = 10
+var is_dead = false
 
-var health=10
 func _physics_process(delta):
-	# Add the gravity.
+	if is_dead:
+		return
+
+	# Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle Jump.
+	# Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		anim.play("jump")
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Movement
 	var direction = Input.get_axis("ui_left", "ui_right")
-	#print(direction)
-	if direction== -1 :
-		get_node("AnimatedSprite2D").flip_h=true;
-	elif direction==1:
-		get_node("AnimatedSprite2D").flip_h=false;
+	if direction == -1:
+		$AnimatedSprite2D.flip_h = true
+	elif direction == 1:
+		$AnimatedSprite2D.flip_h = false
+
 	if direction:
 		velocity.x = direction * SPEED
 		anim.play("run")
@@ -37,3 +39,20 @@ func _physics_process(delta):
 			anim.play("fall")
 
 	move_and_slide()
+
+	if health <= 0 and not is_dead:
+		die()
+func take_damage(amount):
+	if is_dead:
+		return
+	health -= amount
+	print("Player HP now:", health)
+	if health <= 0:
+		die()
+func die():
+	is_dead = true
+	anim.play("death")
+	velocity = Vector2.ZERO
+	await anim.animation_finished
+	print("Player Died")
+	# Optionally: get_tree().reload_current_scene()
