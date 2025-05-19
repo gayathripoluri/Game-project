@@ -234,7 +234,7 @@ shape = SubResource("CapsuleShape2D_8mwp6")
 position = Vector2(-2, -10)
 scale = Vector2(0.777191, 0.906124)
 sprite_frames = SubResource("SpriteFrames_sm0op")
-animation = &"Idle"
+animation = &"dead"
 flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

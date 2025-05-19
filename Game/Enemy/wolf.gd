@@ -45,22 +45,26 @@ func _on_player_collision_body_entered(body: Node2D) -> void:
 		var is_falling = body.velocity.y > 0
 
 		if is_above and is_falling:
-			# ✅ Player stomped enemy
-			print("☠️ Enemy stomped!")
-			body.velocity.y = -200
+			body.velocity.y = -200  # bounce after stomp
 			death()
 		else:
-			# ❌ Player got hit → take damage, enemy stays alive
-			if body.has_method("take_damage"):
-				body.take_damage(3)
-				print("⚠️ Player hit by enemy. HP:", body.health)
+			# 🟩 Register the player in contact and start the timer
+			player_in_contact = body
+			$DamageTimer.start()
 
+func _on_player_collision_body_exited(body: Node2D) -> void:
+	if body.name == "player":
+		player_in_contact = null
+		$DamageTimer.stop()
+		
 func death():
 	chase = false
-	get_node("AnimatedSprite2D").play("death")
+	get_node("AnimatedSprite2D").play("dead")
 	await get_node("AnimatedSprite2D").animation_finished
 	self.queue_free()
 
 
 func _on_damage_timer_timeout() -> void:
-	pass # Replace with function body.
+	if player_in_contact and player_in_contact.has_method("take_damage"):
+		player_in_contact.take_damage(3)
+		print("⚠️ Wolf damaged player. HP:", player_in_contact.health)

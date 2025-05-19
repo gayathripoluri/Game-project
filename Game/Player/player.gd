@@ -51,7 +51,7 @@ func take_damage(amount):
 		die()
 func die():
 	is_dead = true
-	anim.play("death")
+	anim.play("dead")
 	velocity = Vector2.ZERO
 	await anim.animation_finished
 	print("Player Died")
