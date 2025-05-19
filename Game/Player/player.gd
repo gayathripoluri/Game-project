@@ -5,7 +5,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim = get_node("AnimationPlayer")
-var health = 10
+var health = 100
 var is_dead = false
 
 func _physics_process(delta):
@@ -55,4 +55,4 @@ func die():
 	velocity = Vector2.ZERO
 	await anim.animation_finished
 	print("Player Died")
-	# Optionally: get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://gameEnd.tscn")

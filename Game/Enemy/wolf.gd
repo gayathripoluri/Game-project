@@ -8,20 +8,23 @@ var player_in_contact = null
 func _ready():
 	get_node("AnimatedSprite2D").play("idle")
 func _physics_process(delta):
-	# Gravity for Frog
 	velocity.y += gravity * delta
 
-	if chase == true and get_node("AnimatedSprite2D").animation != "death":
+	if chase and get_node("AnimatedSprite2D").animation != "death":
+		# 🟩 Respect the dead
+		if player and player.has_method("is_dead") and player.is_dead:
+			chase = false
+			velocity.x = 0
+			get_node("AnimatedSprite2D").play("idle")
+			return
+
 		get_node("AnimatedSprite2D").play("attack")
 
-		player = get_node("../../player/player")
+		if not player:
+			player = get_node("../../player/player")
+
 		var direction = (player.position - self.position).normalized()
-
-		if direction.x > 0:
-			get_node("AnimatedSprite2D").flip_h = true
-		else:
-			get_node("AnimatedSprite2D").flip_h = false
-
+		get_node("AnimatedSprite2D").flip_h = direction.x > 0
 		velocity.x = direction.x * SPEED
 	else:
 		if get_node("AnimatedSprite2D").animation != "death":
@@ -66,5 +69,12 @@ func death():
 
 func _on_damage_timer_timeout() -> void:
 	if player_in_contact and player_in_contact.has_method("take_damage"):
-		player_in_contact.take_damage(3)
+		if player_in_contact.is_dead:
+			$AnimatedSprite2D.play("idle") # stop attacking the dead
+			chase = false
+			velocity.x = 0
+			$DamageTimer.stop()
+			return
+
+		player_in_contact.take_damage(20)
 		print("⚠️ Wolf damaged player. HP:", player_in_contact.health)

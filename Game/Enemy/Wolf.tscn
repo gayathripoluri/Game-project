@@ -92,7 +92,7 @@ radius = 139.589
 size = Vector2(42, 8.89258)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bj861"]
-size = Vector2(64, 29.875)
+size = Vector2(66, 29.875)
 
 [node name="Wolf" type="CharacterBody2D"]
 script = ExtResource("1_vps75")
@@ -122,7 +122,7 @@ shape = SubResource("RectangleShape2D_vps75")
 [node name="PlayerCollision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
-position = Vector2(2, -16)
+position = Vector2(1, -16)
 shape = SubResource("RectangleShape2D_bj861")
 
 [node name="DamageTimer" type="Timer" parent="."]

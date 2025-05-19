@@ -1,34 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://bg677cyfgp0dl"]
+[gd_scene load_steps=4 format=3 uid="uid://bg677cyfgp0dl"]
 
-[ext_resource type="Script" uid="uid://cx02sbkqg1e5v" path="res://End.gd" id="1_dus1c"]
+[ext_resource type="Script" uid="uid://p3tmu8h723wj" path="res://gameOver.gd" id="1_7a8gl"]
+[ext_resource type="Texture2D" uid="uid://b5pstp5d45n6n" path="res://assets/GameOver/Game Over Bg.png" id="1_dus1c"]
 
-[node name="Label" type="Label"]
-offset_left = 109.0
-offset_top = 78.0
-offset_right = 707.0
-offset_bottom = 127.0
-text = "You Died
-"
-script = ExtResource("1_dus1c")
+[sub_resource type="SpriteFrames" id="SpriteFrames_7a8gl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dus1c")
+}],
+"loop": true,
+"name": &"bg",
+"speed": 5.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_7a8gl")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(586, 323)
+scale = Vector2(0.752604, 0.616211)
+sprite_frames = SubResource("SpriteFrames_7a8gl")
+animation = &"bg"
 
 [node name="Retry" type="Button" parent="."]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 96.0
-offset_right = 496.0
-offset_bottom = 188.0
-text = "Retry
-"
+offset_left = 364.0
+offset_top = 492.0
+offset_right = 609.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 50
+text = "Retry"
 
 [node name="Quit" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.44
-anchor_right = 0.44
-offset_left = -12.12
-offset_top = 269.0
-offset_right = 304.88
-offset_bottom = 376.0
+offset_left = 690.0
+offset_top = 496.0
+offset_right = 935.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 50
 text = "Quit
 "
 

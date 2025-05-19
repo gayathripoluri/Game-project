@@ -6,3 +6,4 @@ res://Main/main.tscn
 res://Player/player.tscn
 res://Bg/bg.tscn
 res://World/world.tscn
+res://gameOver.gd
