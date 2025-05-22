@@ -1,3 +1,5 @@
+res://Enemy
+res://assets/Bg
 res://assets/GameOver
 res://
 res://assets/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2
@@ -6,4 +8,3 @@ res://assets/Enemy/Wolf/Walk
 res://assets/Enemy/Wolf/Idle
 res://assets/Enemy/Wolf/Attack
 res://Player
-res://assets/Bg

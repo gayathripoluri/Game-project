@@ -80,4 +80,4 @@ func _on_damage_timer_timeout() -> void:
 			return
 
 		player_in_contact.take_damage(20)
-		print("⚠️ Wolf damaged player. HP:", player_in_contact.health)
+		#print("⚠️ Wolf damaged player. HP:", player_in_contact.health)

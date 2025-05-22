@@ -1,7 +1,9 @@
 res://Main/main.tscn
+res://Enemy/wolf.gd
+res://World/enemy_spawner.gd
 res://Player/player.tscn
 res://Bg/bg.tscn
 res://World/world.tscn
 res://Enemy/Wolf.tscn
 res://gameEnd.tscn
-res://Enemy/wolf.gd
+res://World/test_node.gd

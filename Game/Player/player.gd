@@ -46,7 +46,7 @@ func take_damage(amount):
 	if is_dead:
 		return
 	health -= amount
-	print("Player HP now:", health)
+	#print("Player HP now:", health)
 	if health <= 0:
 		die()
 func die():
