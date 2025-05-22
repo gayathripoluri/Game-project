@@ -180,7 +180,7 @@ script = ExtResource("3_oe8m4")
 motion_mirroring = Vector2(1500, 0)
 
 [node name="Back" type="Sprite2D" parent="bg/ParallaxLayer"]
-position = Vector2(747, 356.711)
+position = Vector2(748, 348)
 scale = Vector2(0.979167, 0.683029)
 texture = ExtResource("4_w47uh")
 
@@ -190,8 +190,8 @@ scale = Vector2(0.642578, 0.709473)
 texture = ExtResource("5_lo5ox")
 
 [node name="Back3" type="Sprite2D" parent="bg/ParallaxLayer"]
-position = Vector2(3751, 361)
-scale = Vector2(0.983073, 0.709473)
+position = Vector2(3745, 361)
+scale = Vector2(0.975261, 0.709473)
 texture = ExtResource("6_oe8m4")
 
 [node name="player" type="Node2D" parent="."]
@@ -212,18 +212,16 @@ enemy_scene = ExtResource("7_0wqet")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Hp" type="Label" parent="UI"]
-offset_left = 6.0
-offset_top = -6.0
-offset_right = 555.0
-offset_bottom = 96.0
-theme_override_font_sizes/font_size = 50
+offset_top = -2.0
+offset_right = 549.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 15
 text = "Hp:"
 
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
-offset_left = 9.0
-offset_top = 2.0
-offset_right = 302.0
-offset_bottom = 57.0
+offset_top = -1.0
+offset_right = 111.0
+offset_bottom = 29.0
 theme = SubResource("Theme_yf0ba")
 theme_override_styles/background = SubResource("StyleBoxFlat_eidgh")
 step = 1.0

@@ -22,7 +22,7 @@ script = ExtResource("1_7a8gl")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(586, 323)
+position = Vector2(578, 323)
 scale = Vector2(0.752604, 0.616211)
 sprite_frames = SubResource("SpriteFrames_7a8gl")
 animation = &"bg"
