@@ -1,10 +1,10 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1747952163
+::res://::1747963062
 End.gd::GDScript/GDScript::6440465786714830673::1747549703::0::1::::<>Control<><>0<>0<><>::
-gameEnd.tscn::PackedScene/PackedScene::2873549687428451917::1747951065::0::1::::<><><>0<>0<><>::uid://p3tmu8h723wj::::res://gameOver.gd<>uid://b5pstp5d45n6n::::res://assets/GameOver/Game Over Bg.png
+gameEnd.tscn::PackedScene::2873549687428451917::1747963062::0::1::::<><><>0<>0<><>::uid://p3tmu8h723wj::::res://gameOver.gd<>uid://b5pstp5d45n6n::::res://assets/GameOver/Game Over Bg.png
 gameOver.gd::GDScript/GDScript::1111811385881034717::1747636068::0::1::::<>CanvasLayer<><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::6660593648530901789::1745032365::1745032372::1::::<><><>0<>0<>980eede5dc1fac15010fdf771b0a78a8<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-::res://assets/::1747628909
+::res://assets/::1747963432
 ::res://assets/Bg/::1747899860
 Back3.png::CompressedTexture2D/CompressedTexture2D::3028211221861245635::1747899819::1747899860::1::::<><><>0<>0<>7b41518d31c1284bfcbd898261df9ee9<>res://.godot/imported/Back3.png-f92ff44db481f0f18e4ad8f402fe9d0b.ctex::
 Beautiful Forest.png::CompressedTexture2D/CompressedTexture2D::5699736312003717660::1746636545::1746765534::1::::<><><>0<>0<>3fda9fcc4c84918903d9c25caaf5c5d9<>res://.godot/imported/Beautiful Forest.png-38c82ba027c3542a9b1fe01603f34950.ctex::
@@ -508,6 +508,10 @@ walk2.png::CompressedTexture2D/CompressedTexture2D::618265116640744924::17465606
 walk3.png::CompressedTexture2D/CompressedTexture2D::264740510050341680::1746560810::1746561181::1::::<><><>0<>0<>3f72754f476a2c9d9c53dba12741dc59<>res://.godot/imported/walk3.png-b46e61439e73eed64343b1f77a6049f3.ctex::
 ::res://assets/GameOver/::1747628920
 Game Over Bg.png::CompressedTexture2D/CompressedTexture2D::4524179329469598463::1747628809::1747628920::1::::<><><>0<>0<>988574ced8f49e24c7baafb7f22e8d24<>res://.godot/imported/Game Over Bg.png-c07a7b58d6399b79b11aae21a3c038d1.ctex::
+::res://assets/Gems/::1747963632
+Gem.png::CompressedTexture2D::2767430278754755396::1747963632::1747963638::1::::<><><>0<>0<>9404441a9fcd21b19930a26039101836<>res://.godot/imported/Gem.png-b6e80294ad16a844d4be8ace5183d142.ctex::
+Gems 1.png::CompressedTexture2D::4550017695685801772::1747880665::1747963639::1::::<><><>0<>0<>82d55f75935b59e6239eaf029bc641b7<>res://.godot/imported/Gems 1.png-7fbcbbbec97e92061422ef1ec1c10544.ctex::
+Gems in Diamond Shape.png::CompressedTexture2D::6416300834001354947::1747880642::1747963639::1::::<><><>0<>0<>926020bcd1e2c4321c7de2b2f1b52498<>res://.godot/imported/Gems in Diamond Shape.png-3d76b21cddce5dee26bccfb8dbcb88a0.ctex::
 ::res://assets/Hero/::1746330761
 agressive jump.png::CompressedTexture2D/CompressedTexture2D::8969106356224354522::1746041214::1746330761::1::::<><><>0<>0<>7abf27a89fb37b9fb2e88f69d8f4659d<>res://.godot/imported/agressive jump.png-c5b8a718a2243073e4a538bfa78aac5d.ctex::
 Dead 2.png::CompressedTexture2D/CompressedTexture2D::6523214521617650336::1745968068::1746330761::1::::<><><>0<>0<>4adac440a0defb79f96ce11bf71ecb2b<>res://.godot/imported/Dead 2.png-023d6b96f2317d9d1d3e54077a26ea60.ctex::
@@ -1263,16 +1267,17 @@ title-screen.png::CompressedTexture2D/CompressedTexture2D::2512829946792491702::
 ::res://Bg/::1747951065
 bg.gd::GDScript/GDScript::1493204267111455944::1745208205::0::1::::<>ParallaxBackground<><>0<>0<><>::
 bg.tscn::PackedScene/PackedScene::3367648040843266771::1747951065::0::1::::<><><>0<>0<><>::uid://vjk4dw6ikbto::::res://Bg/bg.gd<>uid://jc1n678ndpve::::res://assets/Bg/Title Card With Bg.jpg
-::res://Enemy/::1747952139
-wolf.gd::GDScript::953142818322721604::1747952139::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Enemy/::1747963062
+wolf.gd::GDScript::953142818322721604::1747963062::0::1::::<>CharacterBody2D<><>0<>0<><>::
 Wolf.tscn::PackedScene/PackedScene::3867147038651613549::1747951065::0::1::::<><><>0<>0<><>::uid://ntyege5msv77::::res://Enemy/wolf.gd<>uid://c3hgc806myoug::::res://assets/Enemy/Wolf/Attack/attack.png<>uid://e4rk6l2po735::::res://assets/Enemy/Wolf/Attack/attack2.png<>uid://cpmvpytwwqmcj::::res://assets/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/spritesheet.png<>uid://d3rpwqx4jttrx::::res://assets/Enemy/Wolf/Idle/Idle1.png<>uid://rwulc7w18xqc::::res://assets/Enemy/Wolf/Idle/idle2.png<>uid://cbh4lfyfohdsw::::res://assets/Enemy/Wolf/Walk/walk1.png<>uid://i2q0a8kjbrd1::::res://assets/Enemy/Wolf/Walk/walk2.png<>uid://d1iictsqc7t1::::res://assets/Enemy/Wolf/Walk/walk3.png
 ::res://Main/::1747951065
 main.gd::GDScript/GDScript::7947174950483153360::1747698974::0::1::::<>Node2D<><>0<>0<><>::
 main.tscn::PackedScene/PackedScene::5061197387992540729::1747951065::0::1::::<><><>0<>0<><>::uid://dlhw2s0rnpdp5::::res://Main/main.gd<>uid://bn8kw26mkfu1h::::res://Bg/bg.tscn
-::res://Player/::1747951065
-player.gd::GDScript/GDScript::6753859257433620350::1747882719::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Player/::1747963062
+player.gd::GDScript::6753859257433620350::1747963062::0::1::::<>CharacterBody2D<><>0<>0<><>::
 player.tscn::PackedScene/PackedScene::3768335908587735395::1747951065::0::1::::<><><>0<>0<><>::uid://c3hvcs7nrtqdq::::res://Player/player.gd<>uid://bwoub8382f0yw::::res://assets/Hero/Hero.png<>uid://cusxlytia7175::::res://assets/Hero/dead.png<>uid://bse2vvv23wpxc::::res://assets/Hero/jump2.png
-::res://World/::1747952138
-enemy_spawner.gd::GDScript::6340717272486701939::1747952138::0::1::::<>Node2D<><>0<>0<><>::
+::res://World/::1747963062
+enemy_spawner.gd::GDScript::6340717272486701939::1747962660::0::1::::<>Node2D<><>0<>0<><>::
+timer.gd::GDScript::7791584492904487286::1747961310::0::1::::<>CanvasLayer<><>0<>0<><>::
 world.gd::GDScript/GDScript::3680523243059875685::1747549868::0::1::::<>Node2D<><>0<>0<><>::
-world.tscn::PackedScene::6738819061760425070::1747952138::0::1::::<><><>0<>0<><>::uid://bso4xef7c7ymn::::res://World/world.gd<>uid://bnrmijhnybo1v::::res://assets/sunny-land/assets/environment/tileset.png<>uid://vjk4dw6ikbto::::res://Bg/bg.gd<>uid://co03amee61wpm::::res://assets/Bg/Forest.png<>uid://cng83a57hrowa::::res://assets/Bg/Beautiful Forest.png<>uid://btxn7a1u8aa7t::::res://Player/player.tscn<>uid://bje5gxbggr4v4::::res://assets/Bg/Back3.png<>uid://bvdjl1235ryg0::::res://Enemy/Wolf.tscn<>uid://cwlqxmjjyp2uh::::res://World/enemy_spawner.gd
+world.tscn::PackedScene::6738819061760425070::1747963062::0::1::::<><><>0<>0<><>::uid://bso4xef7c7ymn::::res://World/world.gd<>uid://bnrmijhnybo1v::::res://assets/sunny-land/assets/environment/tileset.png<>uid://vjk4dw6ikbto::::res://Bg/bg.gd<>uid://co03amee61wpm::::res://assets/Bg/Forest.png<>uid://cng83a57hrowa::::res://assets/Bg/Beautiful Forest.png<>uid://btxn7a1u8aa7t::::res://Player/player.tscn<>uid://bje5gxbggr4v4::::res://assets/Bg/Back3.png<>uid://bvdjl1235ryg0::::res://Enemy/Wolf.tscn<>uid://cwlqxmjjyp2uh::::res://World/enemy_spawner.gd<>uid://djaki1rut3jhu::::res://World/timer.gd

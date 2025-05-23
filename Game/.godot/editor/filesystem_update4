@@ -3,3 +3,4 @@ res://Enemy/wolf.gd
 res://World/enemy_spawner.gd
 res://gameEnd.tscn
 res://World/timer.gd
+res://Player/player.gd
