@@ -7,8 +7,15 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
 var health = 100
 var is_dead = false
-
+func _ready():
+	add_to_group("player")  # Add player to the "player" group
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		var player_pos = global_position
+		for gem in get_tree().get_nodes_in_group("gems"):
+			var distance = player_pos.distance_to(gem.global_position)
+			if distance <= 50.0 and not gem.is_collected:  # 50 pixels is COLLECT_DISTANCE
+				gem.collect_gem()
 	if is_dead:
 		return
 
@@ -17,7 +24,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Jump
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		anim.play("jump")
 

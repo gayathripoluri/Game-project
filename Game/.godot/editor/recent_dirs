@@ -1,3 +1,5 @@
+res://Player
+res://assets/Gems
 res://World
 res://Enemy
 res://assets/Bg
@@ -8,4 +10,3 @@ res://assets/Enemy/Wolf/Dead
 res://assets/Enemy/Wolf/Walk
 res://assets/Enemy/Wolf/Idle
 res://assets/Enemy/Wolf/Attack
-res://Player

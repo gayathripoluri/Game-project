@@ -1,6 +1,10 @@
 res://World/world.tscn
 res://Enemy/wolf.gd
 res://World/enemy_spawner.gd
+res://World/gem_spawner.gd
 res://gameEnd.tscn
-res://World/timer.gd
+res://assets/Gems/gems.tscn
+res://Player/player.tscn
 res://Player/player.gd
+res://assets/Gems/gems.gd
+res://World/world.gd
