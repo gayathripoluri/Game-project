@@ -3,7 +3,7 @@ extends Node2D
 @export var enemy_scene: PackedScene  # The wolf scene to instantiate
 @export var spawn_area: Rect2 = Rect2(Vector2(0, 0), Vector2(11000, 600))  # Area where wolves can spawn
 @export var max_enemies: int = 8  # Maximum number of wolves (5)
-@export var min_enemy_distance: float = 300.0  # Minimum distance between wolves
+@export var min_enemy_distance: float = 400.0  # Minimum distance between wolves
 @export var min_player_distance: float = 400.0  # Minimum distance from player
 @export var ground_y: float = 500.0  # Y-position of the ground (adjust to your game’s ground level)
 

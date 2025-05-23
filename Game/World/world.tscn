@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3almonomnu1c"]
+[gd_scene load_steps=17 format=3 uid="uid://c3almonomnu1c"]
 
 [ext_resource type="Script" uid="uid://bso4xef7c7ymn" path="res://World/world.gd" id="1_yf0ba"]
 [ext_resource type="Texture2D" uid="uid://bnrmijhnybo1v" path="res://assets/sunny-land/assets/environment/tileset.png" id="2_eidgh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bje5gxbggr4v4" path="res://assets/Bg/Back3.png" id="6_oe8m4"]
 [ext_resource type="PackedScene" uid="uid://bvdjl1235ryg0" path="res://Enemy/Wolf.tscn" id="7_0wqet"]
 [ext_resource type="Script" uid="uid://cwlqxmjjyp2uh" path="res://World/enemy_spawner.gd" id="8_eidgh"]
+[ext_resource type="Script" uid="uid://djaki1rut3jhu" path="res://World/timer.gd" id="10_w47uh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
 texture = ExtResource("2_eidgh")
@@ -165,6 +166,21 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="Theme" id="Theme_lo5ox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w47uh"]
+bg_color = Color(0.0113849, 0.0319206, 0.0594976, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.0228948, 0.0123964, 0.00169757, 0.6)
+shadow_size = 5
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_yf0ba")
 
@@ -225,3 +241,22 @@ offset_bottom = 29.0
 theme = SubResource("Theme_yf0ba")
 theme_override_styles/background = SubResource("StyleBoxFlat_eidgh")
 step = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("10_w47uh")
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+autostart = true
+
+[node name="TimePanel" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 120.0
+offset_top = -5.0
+offset_right = 160.0
+offset_bottom = 35.0
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer/TimePanel"]
+layout_mode = 2
+theme = SubResource("Theme_lo5ox")
+theme_override_styles/normal = SubResource("StyleBoxFlat_w47uh")
+horizontal_alignment = 1
+vertical_alignment = 1
