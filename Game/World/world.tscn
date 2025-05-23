@@ -169,17 +169,18 @@ corner_radius_bottom_left = 4
 [sub_resource type="Theme" id="Theme_lo5ox"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w47uh"]
-bg_color = Color(0.0113849, 0.0319206, 0.0594976, 1)
+bg_color = Color(0.0622432, 0.283464, 0.218446, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+border_color = Color(0.0733263, 0.25086, 0.209058, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_color = Color(0.0228948, 0.0123964, 0.00169757, 0.6)
-shadow_size = 5
+shadow_color = Color(0.118866, 0.3646, 0.220266, 0.6)
+shadow_size = 2
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_yf0ba")
@@ -235,9 +236,10 @@ theme_override_font_sizes/font_size = 15
 text = "Hp:"
 
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
-offset_top = -1.0
-offset_right = 111.0
-offset_bottom = 29.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 112.0
+offset_bottom = 32.0
 theme = SubResource("Theme_yf0ba")
 theme_override_styles/background = SubResource("StyleBoxFlat_eidgh")
 step = 1.0
@@ -249,10 +251,10 @@ script = ExtResource("10_w47uh")
 autostart = true
 
 [node name="TimePanel" type="PanelContainer" parent="CanvasLayer"]
-offset_left = 120.0
-offset_top = -5.0
-offset_right = 160.0
-offset_bottom = 35.0
+offset_left = 1104.0
+offset_top = 7.0
+offset_right = 1144.0
+offset_bottom = 34.0
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer/TimePanel"]
 layout_mode = 2

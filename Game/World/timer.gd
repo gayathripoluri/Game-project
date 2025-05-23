@@ -29,7 +29,7 @@ func update_timer_display():
 	if time_left < 30.0:
 		timer_label.add_theme_color_override("font_color", Color(1, 0, 0))  # Red when under 30 seconds
 	else:
-		timer_label.add_theme_color_override("font_color", Color(1, 1, 0))  # Yellow otherwise
+		timer_label.add_theme_color_override("font_color", Color(1, 1, 1))  # White otherwise
 
 func game_over():
 	is_running = false
