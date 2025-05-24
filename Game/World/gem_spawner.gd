@@ -12,6 +12,7 @@ var gem_zones = [
 
 var total_gems: int = 5
 var spawned_gems: Array = []
+
 var base_disappear_time: float = 60.0
 
 func _ready():

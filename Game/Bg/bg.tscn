@@ -14,6 +14,7 @@ shader_parameter/tint_strength = 0.4
 script = ExtResource("1_e8j8q")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 1)
 motion_mirroring = Vector2(993, 0)
 
 [node name="Bg" type="Sprite2D" parent="ParallaxLayer"]
