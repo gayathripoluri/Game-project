@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp1harnggwnl2"]
+
+[ext_resource type="Texture2D" uid="uid://8nvs8ws4ywat" path="res://assets/Endings/happy end.png" id="1_numqs"]
+[ext_resource type="Script" uid="uid://q58d0qkfktbw" path="res://Endings/endings.gd" id="1_ycan2"]
+[ext_resource type="Texture2D" uid="uid://dgryep81u03n1" path="res://assets/Endings/sad end.png" id="2_numqs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_numqs"]
+radius = 24.0
+height = 92.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bc246"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("1_numqs")
+}],
+"loop": true,
+"name": &"happy_end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("2_numqs")
+}],
+"loop": true,
+"name": &"sad_end",
+"speed": 5.0
+}]
+
+[node name="Endings" type="CharacterBody2D"]
+script = ExtResource("1_ycan2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_numqs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -22.75)
+scale = Vector2(1, 1.28788)
+sprite_frames = SubResource("SpriteFrames_bc246")
+animation = &"sad_end"

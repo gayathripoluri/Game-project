@@ -4,17 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://bfotf4iu3vx1m" path="res://assets/Gems/Gem.png" id="1_nst0a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cykhp"]
-radius = 27.6586
+radius = 8.06226
 
 [node name="Gems" type="Area2D" groups=["gems"]]
 script = ExtResource("1_cykhp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.27374e-13, -4)
-scale = Vector2(0.0353139, 0.0463362)
+position = Vector2(0, -3)
+scale = Vector2(0.0221413, 0.0287356)
 texture = ExtResource("1_nst0a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_cykhp")
 
 [node name="Timer" type="Timer" parent="."]

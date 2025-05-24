@@ -242,8 +242,8 @@ position = Vector2(0, -1)
 zoom = Vector2(1.4, 1.4)
 limit_left = 0
 limit_top = 0
-limit_right = 11100
-limit_bottom = 800
+limit_right = 11800
+limit_bottom = 600
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

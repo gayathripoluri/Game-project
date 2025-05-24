@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://byjgnt6irmgms"]
+
+[ext_resource type="Script" uid="uid://diysb6onjxj2i" path="res://LoveLetterPanel/loveletterpanel.gd" id="1_7pftc"]
+[ext_resource type="Texture2D" uid="uid://cm2e0k5aiy71e" path="res://assets/Bg/Heart.png" id="2_0qfrs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d01ck"]
+bg_color = Color(0.81986, 0.595076, 0.93944, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjsj8"]
+bg_color = Color(0.5482, 0.695399, 1, 1)
+
+[node name="LoveLetterPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7pftc")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 77.0
+offset_right = 810.0
+offset_bottom = 477.0
+
+[node name="HeartDecor" type="Sprite2D" parent="."]
+position = Vector2(770, 287)
+scale = Vector2(0.0908203, 0.0820312)
+texture = ExtResource("2_0qfrs")
+
+[node name="HeartDecor2" type="Sprite2D" parent="."]
+position = Vector2(693, 139)
+scale = Vector2(0.0908203, 0.0820312)
+texture = ExtResource("2_0qfrs")
+
+[node name="HeartDecor3" type="Sprite2D" parent="."]
+position = Vector2(270, 144)
+scale = Vector2(0.0908203, 0.0820312)
+texture = ExtResource("2_0qfrs")
+
+[node name="HeartDecor4" type="Sprite2D" parent="."]
+position = Vector2(704, 407)
+scale = Vector2(0.0908203, 0.0820312)
+texture = ExtResource("2_0qfrs")
+
+[node name="HeartDecor5" type="Sprite2D" parent="."]
+position = Vector2(279, 390)
+scale = Vector2(0.0908203, 0.0820312)
+texture = ExtResource("2_0qfrs")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 163.0
+offset_right = 657.0
+offset_bottom = 379.0
+theme_override_colors/background_color = Color(0.936703, 0.699943, 0.811988, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+drag_and_drop_selection_enabled = false
+
+[node name="Submit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 385.0
+offset_right = 642.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(0.894922, 0.894922, 0.894922, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_d01ck")
+text = "Submit❤️
+"
+
+[node name="CheaterLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 401.0
+offset_right = 488.0
+offset_bottom = 431.0
+theme_override_colors/font_color = Color(1, 0.124572, 0.0864943, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wjsj8")
+
+[connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]
