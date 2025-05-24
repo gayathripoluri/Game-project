@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg677cyfgp0dl"]
+[gd_scene load_steps=6 format=3 uid="uid://bg677cyfgp0dl"]
 
 [ext_resource type="Script" uid="uid://p3tmu8h723wj" path="res://gameOver.gd" id="1_7a8gl"]
 [ext_resource type="Texture2D" uid="uid://b5pstp5d45n6n" path="res://assets/GameOver/Game Over Bg.png" id="1_dus1c"]
@@ -14,6 +14,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a8gl"]
+bg_color = Color(0.66615, 0.374788, 0.0927547, 1)
+border_color = Color(0.666667, 0.376471, 0.0941176, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhodg"]
+bg_color = Color(0.666667, 0.376471, 0.0941176, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_7a8gl")
 
@@ -28,20 +43,22 @@ sprite_frames = SubResource("SpriteFrames_7a8gl")
 animation = &"bg"
 
 [node name="Retry" type="Button" parent="."]
-offset_left = 364.0
-offset_top = 492.0
-offset_right = 609.0
-offset_bottom = 598.0
-theme_override_font_sizes/font_size = 50
-text = "Retry"
+offset_left = 501.0
+offset_top = 448.0
+offset_right = 699.0
+offset_bottom = 523.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_7a8gl")
+text = "Retry😩"
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 690.0
-offset_top = 496.0
-offset_right = 935.0
-offset_bottom = 598.0
-theme_override_font_sizes/font_size = 50
-text = "Quit
+offset_left = 495.0
+offset_top = 541.0
+offset_right = 699.0
+offset_bottom = 611.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_dhodg")
+text = "Quit😒
 "
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]

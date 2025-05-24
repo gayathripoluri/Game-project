@@ -23,3 +23,4 @@ res://Player/player-outline.gdshader
 res://assets/Gems/gem_pulse.gdshader
 res://Enemy/enemy_flash.gdshader
 res://Bg/bg-tint.gdshader
+res://Main/main.tscn
