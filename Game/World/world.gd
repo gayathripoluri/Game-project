@@ -158,8 +158,9 @@ func play_ending(animation_name: String):
 		add_child(canvas_layer)
 		print("Created new CanvasLayer")
 	
-	canvas_layer.add_child(ending_scene)
-	print("Ending scene added to CanvasLayer, visible:", ending_scene.visible)
+	get_tree().get_root().add_child(ending_scene)
+	ending_scene.global_position = Vector2(player.global_position.x, 0)  # position it near where player reached end
+
 	ending_scene.position = get_viewport_rect().size / 2
 	print("Ending scene positioned at:", ending_scene.position)
 
@@ -174,7 +175,9 @@ func show_love_letter_panel():
 	var love_letter_scene = preload("res://LoveLetterPanel/LoveLetterPanel.tscn").instantiate()
 	if love_letter_scene:
 		canvas_layer.add_child(love_letter_scene)
-		print("Love letter scene added to CanvasLayer")
+		await get_tree().process_frame  # ensure frame finishes
+		get_tree().paused = true
+
 		love_letter_scene.position = (get_viewport_rect().size - love_letter_scene.size) / 2
 		print("Love letter panel positioned at:", love_letter_scene.position)
 	else:

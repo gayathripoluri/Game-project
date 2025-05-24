@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn8kw26mkfu1h"]
+[gd_scene load_steps=5 format=3 uid="uid://bn8kw26mkfu1h"]
 
 [ext_resource type="Script" uid="uid://vjk4dw6ikbto" path="res://Bg/bg.gd" id="1_e8j8q"]
+[ext_resource type="Shader" uid="uid://2h0kn4djfl3s" path="res://Bg/bg-tint.gdshader" id="2_g5t6c"]
 [ext_resource type="Texture2D" uid="uid://jc1n678ndpve" path="res://assets/Bg/Title Card With Bg.jpg" id="3_e8j8q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k285b"]
+shader = ExtResource("2_g5t6c")
+shader_parameter/tint_color = Vector4(0.9, 0.7, 0.8, 1)
+shader_parameter/tint_speed = 0.3
+shader_parameter/tint_strength = 0.4
 
 [node name="bg" type="ParallaxBackground"]
 script = ExtResource("1_e8j8q")
@@ -11,6 +18,7 @@ motion_scale = Vector2(0, 1)
 motion_mirroring = Vector2(993, 0)
 
 [node name="Bg" type="Sprite2D" parent="ParallaxLayer"]
+material = SubResource("ShaderMaterial_k285b")
 position = Vector2(609, 360)
 scale = Vector2(0.794062, 0.707)
 texture = ExtResource("3_e8j8q")

@@ -13,3 +13,13 @@ res://Enemy/Wolf.tscn
 res://Endings/Endings.tscn
 res://LoveLetterPanel/LoveLetterPanel.tscn
 res://LoveLetterPanel/loveletterpanel.gd
+res://Player/player-outline.gd
+res://Shaders/player-outline.shader.txt
+res://Shaders/gem_pulse.shader.txt
+res://Shaders/bg_tint.shader.txt
+res://Shaders/enemy_flash.shader.txt
+res://Shaders/player-outline.gdshader
+res://Player/player-outline.gdshader
+res://assets/Gems/gem_pulse.gdshader
+res://Enemy/enemy_flash.gdshader
+res://Bg/bg-tint.gdshader

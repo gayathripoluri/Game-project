@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2golq5sju845"]
+[gd_scene load_steps=6 format=3 uid="uid://b2golq5sju845"]
 
 [ext_resource type="Script" uid="uid://34jweg200ono" path="res://assets/Gems/gems.gd" id="1_cykhp"]
 [ext_resource type="Texture2D" uid="uid://bfotf4iu3vx1m" path="res://assets/Gems/Gem.png" id="1_nst0a"]
+[ext_resource type="Shader" uid="uid://bsg4it2xthsc5" path="res://assets/Gems/gem_pulse.gdshader" id="2_de7ca"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7pwlr"]
+shader = ExtResource("2_de7ca")
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_strength = 0.4
+shader_parameter/pulse_color = Vector4(0.8, 0.4, 0.8, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cykhp"]
 radius = 8.06226
@@ -10,6 +17,7 @@ radius = 8.06226
 script = ExtResource("1_cykhp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7pwlr")
 position = Vector2(0, -3)
 scale = Vector2(0.0221413, 0.0287356)
 texture = ExtResource("1_nst0a")

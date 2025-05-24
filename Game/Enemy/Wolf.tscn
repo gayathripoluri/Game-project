@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bvdjl1235ryg0"]
+[gd_scene load_steps=21 format=3 uid="uid://bvdjl1235ryg0"]
 
 [ext_resource type="Script" uid="uid://ntyege5msv77" path="res://Enemy/wolf.gd" id="1_vps75"]
 [ext_resource type="Texture2D" uid="uid://c3hgc806myoug" path="res://assets/Enemy/Wolf/Attack/attack.png" id="1_vyeuo"]
+[ext_resource type="Shader" uid="uid://ckvefchj1aenx" path="res://Enemy/enemy_flash.gdshader" id="2_atdkd"]
 [ext_resource type="Texture2D" uid="uid://e4rk6l2po735" path="res://assets/Enemy/Wolf/Attack/attack2.png" id="2_p5yqe"]
 [ext_resource type="Texture2D" uid="uid://cpmvpytwwqmcj" path="res://assets/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/spritesheet.png" id="3_p5yqe"]
 [ext_resource type="Texture2D" uid="uid://d3rpwqx4jttrx" path="res://assets/Enemy/Wolf/Idle/Idle1.png" id="3_vps75"]
@@ -12,6 +13,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mbod"]
 size = Vector2(48, 25)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8jo8"]
+shader = ExtResource("2_atdkd")
+shader_parameter/is_hit = false
+shader_parameter/flash_intensity = 0.7
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vps75"]
 atlas = ExtResource("3_p5yqe")
@@ -102,6 +109,7 @@ position = Vector2(2, -12.5)
 shape = SubResource("RectangleShape2D_2mbod")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_u8jo8")
 position = Vector2(2, -17)
 scale = Vector2(1.09559, 1.10757)
 sprite_frames = SubResource("SpriteFrames_8oaq4")

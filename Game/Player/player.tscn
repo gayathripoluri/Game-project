@@ -1,13 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://btxn7a1u8aa7t"]
+[gd_scene load_steps=19 format=3 uid="uid://btxn7a1u8aa7t"]
 
 [ext_resource type="Script" uid="uid://c3hvcs7nrtqdq" path="res://Player/player.gd" id="1_p5o4e"]
 [ext_resource type="Texture2D" uid="uid://bwoub8382f0yw" path="res://assets/Hero/Hero.png" id="2_apopc"]
+[ext_resource type="Shader" uid="uid://dqlqhvwrdo8me" path="res://Player/player-outline.gdshader" id="2_k53q1"]
 [ext_resource type="Texture2D" uid="uid://cusxlytia7175" path="res://assets/Hero/dead.png" id="3_gwnis"]
 [ext_resource type="Texture2D" uid="uid://bse2vvv23wpxc" path="res://assets/Hero/jump2.png" id="4_k53q1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mwp6"]
 radius = 8.0
 height = 52.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwnis"]
+shader = ExtResource("2_k53q1")
+shader_parameter/outline_width = 0.002
+shader_parameter/outline_color = Vector4(1, 0.7, 0.7, 1)
+shader_parameter/outline_opacity = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gu6f8"]
 atlas = ExtResource("2_apopc")
@@ -231,6 +238,7 @@ position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_8mwp6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_gwnis")
 position = Vector2(-3, -15)
 scale = Vector2(1.11983, 1.10584)
 sprite_frames = SubResource("SpriteFrames_sm0op")
