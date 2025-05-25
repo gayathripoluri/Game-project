@@ -45,20 +45,18 @@ func _process(_delta):
 	if not player or has_triggered_end:
 		return
 	
-	print("Player Health:", player.health, "X:", player.global_position.x, "Y:", player.global_position.y)
+	var player = get_node("player/player")
+	print("Player Health:", player.health)
 	var health_bar = get_node("HealthBar/ProgressBar")
 	var hp_label = get_node("HealthBar/Hp")
-	if health_bar and hp_label:
-		health_bar.value = player.health
-		health_bar.max_value = 10
-		hp_label.text = "HP: " + str(player.health) + "/10"
-		
-		if player.health <= 3:
-			health_bar.set("theme_override_styles/fill", red_style)
-		else:
-			health_bar.set("theme_override_styles/fill", green_style)
+
+	health_bar.value = player.health
+	hp_label.text = "HP: " + str(player.health) + "/10"
+	hp_label.text = "HP: " + str(player.health)
+	if player.health <= 3:
+		health_bar.set("theme_override_styles/fill", red_style)
 	else:
-		print("HealthBar or Hp label not found")
+		health_bar.set("theme_override_styles/fill", green_style)
 
 	print("Trigger Check - X >= 11500:", player.global_position.x >= 11500, "Not Dead:", not player.is_dead, "Not Triggered:", not has_triggered_end)
 	if player.global_position.x >= 11500 and not player.is_dead and not has_triggered_end:
@@ -193,3 +191,4 @@ func _on_gem_collected():
 		if gem_label:
 			gem_label.text = "Gems: %d/%d" % [gem_count, total_gems]
 		print("Gem collected! Total: ", gem_count)
+		

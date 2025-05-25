@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cp1harnggwnl2"]
 
 [ext_resource type="Texture2D" uid="uid://8nvs8ws4ywat" path="res://assets/Endings/happy end.png" id="1_numqs"]
-[ext_resource type="Script" uid="uid://q58d0qkfktbw" path="res://Endings/endings.gd" id="1_ycan2"]
+[ext_resource type="Script" uid="uid://q58d0qkfktbw" path="res://Endings/Endings.gd" id="1_ycan2"]
 [ext_resource type="Texture2D" uid="uid://dgryep81u03n1" path="res://assets/Endings/sad end.png" id="2_numqs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_numqs"]
