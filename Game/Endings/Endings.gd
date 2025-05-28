@@ -28,11 +28,10 @@ func _ready():
 	else:
 		print("Invalid or missing animation_to_play value:", animation_to_play)
 	
-	# Position the sprite (centered relative to Node2D)
-	animated_sprite.position = Vector2(0, 0)
+	# Do not set position here; rely on World.gd positioning
 	animated_sprite.scale = Vector2(1, 1)
 	animated_sprite.visible = true
-	print("AnimatedSprite2D positioned at:", animated_sprite.position, "with scale:", animated_sprite.scale)
+	print("AnimatedSprite2D set with scale:", animated_sprite.scale)
 	
 	# Add a timer to return to main menu or restart
 	var timer = Timer.new()

@@ -50,7 +50,7 @@ func _process(_delta):
 	health_bar.value = player.health
 	hp_label.text = "HP: %d/10" % player.health
 	
-	if player.health <= 30:
+	if player.health <= 3:
 		health_bar.set("theme_override_styles/fill", red_style)
 	else:
 		health_bar.set("theme_override_styles/fill", green_style)
@@ -62,7 +62,7 @@ func _process(_delta):
 		get_tree().paused = true
 		if player:
 			player.set_physics_process(false)
-		land_player()
+		await land_player()
 		check_end_condition()
 
 func on_game_over():
@@ -71,7 +71,7 @@ func on_game_over():
 		get_tree().paused = true
 		if player:
 			player.set_physics_process(false)
-		land_player()
+		await land_player()
 		check_end_condition()
 
 func check_end_condition():
@@ -92,9 +92,7 @@ func check_end_condition():
 			print("Not enough gems, triggering sad_end (gems =", gem_count, ")")
 			play_ending("sad_end")
 		else:  # gem_count == 4
-			
 			print("Exactly 4 gems, showing love letter panel")
-			
 			show_love_letter_panel()
 	else:
 		get_tree().paused = false
@@ -115,10 +113,11 @@ func land_player():
 			player.global_position = Vector2(player.global_position.x, ground_y)
 			print("Landed player at y =", ground_y)
 		else:
-			var default_ground_y = 354.0
+			var default_ground_y = 200.0  # Adjusted to match platform (~310 in image)
 			player.global_position = Vector2(player.global_position.x, default_ground_y)
 			print("No ground detected, landed at default y =", default_ground_y)
 		await get_tree().create_timer(0.1).timeout
+		return player.global_position.y
 
 func play_ending(animation_name: String):
 	print("Playing ending:", animation_name)
@@ -134,15 +133,19 @@ func play_ending(animation_name: String):
 	ending_scene.animation_to_play = animation_name
 	if not canvas_layer:
 		canvas_layer = CanvasLayer.new()
-		canvas_layer.layer = 100
+		canvas_layer.layer = 20
 		add_child(canvas_layer)
 		print("Created new CanvasLayer at layer:", canvas_layer.layer)
 	
+	var ground_y = await land_player()
+	print("Ground y after landing:", ground_y)
 	canvas_layer.add_child(ending_scene)
-	# Position at viewport center for simplicity
+	# Position with ground y adjustment, ensuring base aligns with ground
 	var viewport_center = get_viewport_rect().size / 2
-	ending_scene.position = viewport_center
-	ending_scene.scale = Vector2(1, 1)  # Ensure scale is normal
+	var sprite_height = 100.0  # Increased to lower the sprite further
+	var additional_offset = 20.0  # Small offset to fine-tune lowering
+	ending_scene.position = Vector2(viewport_center.x, ground_y - sprite_height - additional_offset)
+	ending_scene.scale = Vector2(1, 1)
 	ending_scene.visible = true
 	print("Ending scene added to CanvasLayer at position:", ending_scene.position, "with scale:", ending_scene.scale)
 

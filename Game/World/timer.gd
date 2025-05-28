@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var timer_label = $TimePanel/TimerLabel  # Updated path to match your scene
 @onready var timer = $Timer
-@export var total_time: float = 120.0  # 2 minutes in seconds
+@export var total_time: float = 60.0  # Changed to 1 minute (60 seconds)
 var time_left: float
 var is_running: bool = true
 
@@ -37,4 +37,4 @@ func game_over():
 
 func _on_end_reached():
 	is_running = false
-	#get_tree().change_scene_to_file("res://victory.tscn")
+	#get_tree().change_scene_to_file("res://victory.tscn") change this script that The game ends in 1 minute

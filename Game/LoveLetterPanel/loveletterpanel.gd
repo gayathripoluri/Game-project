@@ -70,7 +70,7 @@ func is_good_letter(text):
 func create_heart_style():
 	var style = StyleBoxFlat.new()
 	style.bg_color = Color(1, 0.5, 0.5)
-	#style.corner_radius = 10
+	style.corner_radius = 10
 	style.border_width = 2
 	style.border_color = Color(1, 0, 0)
 	return style
