@@ -1,34 +1,48 @@
-extends CharacterBody2D
+extends Node2D
 
-@export var animation_to_play: String = "happy_end"
-@onready var animated_sprite = $AnimatedSprite2D
+var animation_to_play: String = ""
+
+@onready var animated_sprite = $AnimatedSprite2D if has_node("AnimatedSprite2D") else null
 
 func _ready():
-	print("Endings scene initialized with animation:", animation_to_play)
+	if not animated_sprite:
+		print("AnimatedSprite2D not found in Endings.tscn")
+		return
 	
-	# Disable physics processing since we only need to display the sprite
-	set_physics_process(false)
-	
-	# Ensure the node is visible
-	move_to_front()
-	get_tree().paused = true  # Pause the game during the ending
-	
-	if animated_sprite and animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(animation_to_play):
-		print("AnimatedSprite2D found, playing", animation_to_play)
-		animated_sprite.play(animation_to_play)
-		# Wait for a fixed duration since it's a single-frame animation
-		await get_tree().create_timer(3.0).timeout
-		print("Ending display finished:", animation_to_play)
+	# Verify animation names in SpriteFrames
+	var sprite_frames = animated_sprite.sprite_frames
+	if sprite_frames:
+		var animations = sprite_frames.get_animation_names()
+		print("Available animations in SpriteFrames:", animations)
 	else:
-		push_error("AnimatedSprite2D not found or animation '%s' missing!" % animation_to_play)
-		# Fallback: wait 3 seconds before transitioning
-		await get_tree().create_timer(3.0).timeout
+		print("SpriteFrames not set in AnimatedSprite2D")
+		return
 	
-	# Transition to appropriate scene based on the ending
-	if animation_to_play == "happy_end":
-		get_tree().change_scene_to_file("res://victory.tscn")
+	# Play the appropriate animation
+	if animation_to_play == "happy_end" and sprite_frames.has_animation("happy_end"):
+		animated_sprite.play("happy_end")
+		print("Playing happy_end animation")
+	elif animation_to_play == "sad_end" and sprite_frames.has_animation("sad_end"):
+		animated_sprite.play("sad_end")
+		print("Playing sad_end animation")
 	else:
-		get_tree().change_scene_to_file("res://gameEnd.tscn")
+		print("Invalid or missing animation_to_play value:", animation_to_play)
 	
+	# Position the sprite (centered relative to Node2D)
+	animated_sprite.position = Vector2(0, 0)
+	animated_sprite.scale = Vector2(1, 1)
+	animated_sprite.visible = true
+	print("AnimatedSprite2D positioned at:", animated_sprite.position, "with scale:", animated_sprite.scale)
+	
+	# Add a timer to return to main menu or restart
+	var timer = Timer.new()
+	timer.wait_time = 5.0  # Display for 5 seconds
+	timer.one_shot = true
+	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
+	add_child(timer)
+	timer.start()
+
+func _on_timer_timeout():
+	# Return to main menu or restart (adjust path as needed)
 	get_tree().paused = false
-	queue_free()
+	get_tree().change_scene_to_file("res://main_menu.tscn")

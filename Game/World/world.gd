@@ -21,8 +21,8 @@ func _ready():
 	else:
 		print("GemCount/Label not found")
 	
-	if timer_scene and timer_scene.has_signal("game_over"):
-		timer_scene.connect("game_over", Callable(self, "on_game_over"))
+	if timer_scene:
+		timer_scene.connect("timeout", Callable(self, "on_game_over"))
 		print("Timer connected successfully")
 	else:
 		print("TimerSetup/Timer not found")
@@ -45,32 +45,33 @@ func _process(_delta):
 	if not player or has_triggered_end:
 		return
 	
-	var player = get_node("player/player")
-	print("Player Health:", player.health)
 	var health_bar = get_node("HealthBar/ProgressBar")
 	var hp_label = get_node("HealthBar/Hp")
-
 	health_bar.value = player.health
-	hp_label.text = "HP: " + str(player.health) + "/10"
-	hp_label.text = "HP: " + str(player.health)
-	if player.health <= 3:
+	hp_label.text = "HP: %d/10" % player.health
+	
+	if player.health <= 30:
 		health_bar.set("theme_override_styles/fill", red_style)
 	else:
 		health_bar.set("theme_override_styles/fill", green_style)
-
-	print("Trigger Check - X >= 11500:", player.global_position.x >= 11500, "Not Dead:", not player.is_dead, "Not Triggered:", not has_triggered_end)
+	
 	if player.global_position.x >= 11500 and not player.is_dead and not has_triggered_end:
 		print("Player reached trigger position at x =", player.global_position.x)
 		if timer_scene:
-			timer_scene.is_running = false
+			timer_scene.get_parent().is_running = false
 		get_tree().paused = true
 		if player:
 			player.set_physics_process(false)
+		land_player()
 		check_end_condition()
 
 func on_game_over():
 	print("Time's up!")
 	if not has_triggered_end:
+		get_tree().paused = true
+		if player:
+			player.set_physics_process(false)
+		land_player()
 		check_end_condition()
 
 func check_end_condition():
@@ -78,89 +79,72 @@ func check_end_condition():
 		print("Ending already triggered, skipping")
 		return
 	
-	var time_left = timer_scene.time_left if timer_scene else 0
+	var time_left = timer_scene.get_parent().time_left if timer_scene else 0
 	print("Checking end condition: gem_count =", gem_count, "time_left =", time_left, "player x =", player.global_position.x if player else "N/A")
 	
-	if player and player.global_position.x >= 11500:
+	# Only trigger ending at x >= 11500 or timer out
+	if (player and player.global_position.x >= 11500) or time_left <= 0:
 		has_triggered_end = true
-		print("Player reached end at x =", player.global_position.x, "with gem_count =", gem_count)
 		if gem_count == 5:
-			print("All gems collected, triggering happy_end")
+			print("All 5 gems collected, triggering happy_end")
 			play_ending("happy_end")
 		elif gem_count < 4:
 			print("Not enough gems, triggering sad_end (gems =", gem_count, ")")
 			play_ending("sad_end")
-		elif gem_count == 4:
-			print("Exactly 4 gems, attempting to show love letter panel")
+		else:  # gem_count == 4
+			
+			print("Exactly 4 gems, showing love letter panel")
+			
 			show_love_letter_panel()
-	elif time_left > 0 and gem_count == 5:
-		has_triggered_end = true
-		print("Time remaining and all gems collected, triggering happy_end")
-		play_ending("happy_end")
-	elif time_left <= 0 and gem_count < 4:
-		has_triggered_end = true
-		print("Time ran out and not enough gems, triggering sad_end")
-		play_ending("sad_end")
 	else:
-		print("No ending triggered: player x =", player.global_position.x, "gems =", gem_count, "time_left =", time_left)
+		get_tree().paused = false
+		if player:
+			player.set_physics_process(true)
+		print("No ending triggered: waiting for x >= 11500 or timer to run out")
 
 func land_player():
 	if player:
 		var space_state = get_world_2d().direct_space_state
-		var ray_start = player.global_position + Vector2(0, -50)
-		var ray_end = player.global_position + Vector2(0, 50000)
+		var ray_start = player.global_position
+		var ray_end = player.global_position + Vector2(0, 200)
 		var ray_query = PhysicsRayQueryParameters2D.create(ray_start, ray_end, 1, [player])
 		var result = space_state.intersect_ray(ray_query)
 		
-		print("Raycast:", result)
 		if result:
-			var collision_shape = player.get_node("CollisionShape2D")
-			var vertical_offset = 0.0
-			if collision_shape and collision_shape.shape:
-				if collision_shape.shape is CapsuleShape2D:
-					vertical_offset = collision_shape.shape.height + 2 * collision_shape.shape.radius
-				elif collision_shape.shape is RectangleShape2D:
-					vertical_offset = collision_shape.shape.extents.y
-				else:
-					vertical_offset = 0.0
-					print("Unknown collision shape type, using default offset")
-			else:
-				print("CollisionShape2D or shape not found, using default offset")
-				vertical_offset = 0.0
-			
-			var ground_y = result.position.y - vertical_offset
-			player.global_position = Vector2(11500, ground_y)
-			print("Landed at y =", ground_y, "with offset =", vertical_offset)
+			var ground_y = result.position.y
+			player.global_position = Vector2(player.global_position.x, ground_y)
+			print("Landed player at y =", ground_y)
 		else:
-			var default_ground_y = 550.0
-			player.global_position = Vector2(11500, default_ground_y)
-			print("No ground, landed at y =", default_ground_y)
-		
-		player.set_physics_process(true)
-		await get_tree().create_timer(0.5).timeout
-		player.set_physics_process(false)
+			var default_ground_y = 354.0
+			player.global_position = Vector2(player.global_position.x, default_ground_y)
+			print("No ground detected, landed at default y =", default_ground_y)
+		await get_tree().create_timer(0.1).timeout
 
 func play_ending(animation_name: String):
-	print("Attempting to play ending:", animation_name)
+	print("Playing ending:", animation_name)
 	if player:
-		player.queue_free()
-		print("Player freed")
+		player.visible = false
+		player.set_physics_process(false)
 	
 	var ending_scene = preload("res://Endings/Endings.tscn").instantiate()
-	ending_scene.animation_to_play = animation_name
-	ending_scene.visible = true
+	if not ending_scene:
+		print("Failed to instantiate Endings.tscn")
+		return
 	
+	ending_scene.animation_to_play = animation_name
 	if not canvas_layer:
 		canvas_layer = CanvasLayer.new()
 		canvas_layer.layer = 100
 		add_child(canvas_layer)
-		print("Created new CanvasLayer")
+		print("Created new CanvasLayer at layer:", canvas_layer.layer)
 	
-	get_tree().get_root().add_child(ending_scene)
-	ending_scene.global_position = Vector2(player.global_position.x, 0)  # position it near where player reached end
-
-	ending_scene.position = get_viewport_rect().size / 2
-	print("Ending scene positioned at:", ending_scene.position)
+	canvas_layer.add_child(ending_scene)
+	# Position at viewport center for simplicity
+	var viewport_center = get_viewport_rect().size / 2
+	ending_scene.position = viewport_center
+	ending_scene.scale = Vector2(1, 1)  # Ensure scale is normal
+	ending_scene.visible = true
+	print("Ending scene added to CanvasLayer at position:", ending_scene.position, "with scale:", ending_scene.scale)
 
 func show_love_letter_panel():
 	print("Initiating love letter panel display")
@@ -168,15 +152,11 @@ func show_love_letter_panel():
 		canvas_layer = CanvasLayer.new()
 		canvas_layer.layer = 100
 		add_child(canvas_layer)
-		print("Created new CanvasLayer for panel")
 	
 	var love_letter_scene = preload("res://LoveLetterPanel/LoveLetterPanel.tscn").instantiate()
 	if love_letter_scene:
 		canvas_layer.add_child(love_letter_scene)
-		await get_tree().process_frame  # ensure frame finishes
-		get_tree().paused = true
-
-		love_letter_scene.position = (get_viewport_rect().size - love_letter_scene.size) / 2
+		love_letter_scene.position = get_viewport_rect().size / 2
 		print("Love letter panel positioned at:", love_letter_scene.position)
 	else:
 		print("Failed to instantiate LoveLetterPanel.tscn")
@@ -191,4 +171,4 @@ func _on_gem_collected():
 		if gem_label:
 			gem_label.text = "Gems: %d/%d" % [gem_count, total_gems]
 		print("Gem collected! Total: ", gem_count)
-		
+		# Do not trigger ending here, wait for x >= 11500 or timer

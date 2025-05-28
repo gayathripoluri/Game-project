@@ -5,6 +5,7 @@ res://Enemy/enemy_flash.gdshader
 res://World/enemy_spawner.gd
 res://assets/Gems/gem_pulse.gdshader
 res://Bg/bg-tint.gdshader
+res://Endings/Endings.gd
 res://World/world.gd
 res://gameEnd.tscn
 res://assets/Gems/gems.tscn
