@@ -1,12 +1,11 @@
 res://World/world.tscn
+res://assets/Gems/gem_pulse.gdshader
 res://Player/player-outline.gdshader
 res://Enemy/wolf.gd
 res://Enemy/enemy_flash.gdshader
 res://World/enemy_spawner.gd
-res://assets/Gems/gem_pulse.gdshader
 res://Bg/bg-tint.gdshader
-res://Endings/Endings.gd
-res://World/world.gd
+res://LoveLetterPanel/loveletterpanel.gd
 res://gameEnd.tscn
 res://assets/Gems/gems.tscn
 res://Player/player.tscn
@@ -15,5 +14,4 @@ res://Enemy/Wolf.tscn
 res://Endings/Endings.tscn
 res://LoveLetterPanel/LoveLetterPanel.tscn
 res://Main/main.tscn
-res://LoveLetterPanel/loveletterpanel.gd
-res://World/timer.gd
+res://World/world.gd

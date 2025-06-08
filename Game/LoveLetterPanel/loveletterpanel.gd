@@ -23,7 +23,6 @@ func _ready():
 	submit_button.add_theme_stylebox_override("hover", create_heart_style_hover())
 	submit_button.add_theme_color_override("font_color", Color(1, 1, 1))
 	submit_button.add_theme_color_override("font_color_hover", Color(1, 0.9, 0.9))
-	submit_button.connect("pressed", Callable(self, "_on_submit_pressed"))
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
@@ -70,18 +69,32 @@ func is_good_letter(text):
 func create_heart_style():
 	var style = StyleBoxFlat.new()
 	style.bg_color = Color(1, 0.5, 0.5)
-	style.corner_radius = 10
-	style.border_width = 2
 	style.border_color = Color(1, 0, 0)
+	style.border_width_top = 2
+	style.border_width_bottom = 2
+	style.border_width_left = 2
+	style.border_width_right = 2
+	style.corner_radius_top_left = 10
+	style.corner_radius_top_right = 10
+	style.corner_radius_bottom_left = 10
+	style.corner_radius_bottom_right = 10
 	return style
+
 
 func create_heart_style_hover():
 	var style = StyleBoxFlat.new()
 	style.bg_color = Color(1, 0.6, 0.6)
-	style.corner_radius = 10
-	style.border_width = 2
 	style.border_color = Color(1, 0, 0)
+	style.border_width_top = 2
+	style.border_width_bottom = 2
+	style.border_width_left = 2
+	style.border_width_right = 2
+	style.corner_radius_top_left = 10
+	style.corner_radius_top_right = 10
+	style.corner_radius_bottom_left = 10
+	style.corner_radius_bottom_right = 10
 	return style
+
 
 func shake_label():
 	var original_pos = cheater_label.position

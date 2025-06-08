@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dgryep81u03n1" path="res://assets/Endings/sad end.png" id="2_numqs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_numqs"]
-radius = 24.0
+radius = 32.0
 height = 92.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bc246"]
@@ -35,7 +35,8 @@ position = Vector2(2, -44)
 shape = SubResource("CapsuleShape2D_numqs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -31)
-scale = Vector2(1, 1.76515)
+position = Vector2(0, -33)
+scale = Vector2(1.14516, 2.03409)
 sprite_frames = SubResource("SpriteFrames_bc246")
 animation = &"happy_end"
+centered = false
