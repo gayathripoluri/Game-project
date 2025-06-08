@@ -51,7 +51,7 @@ func _process(_delta):
 	health_bar.value = player.health
 	hp_label.text = "HP: %d/10" % player.health
 
-	if player.health <= 3:
+	if player.health <= 30:
 		health_bar.set("theme_override_styles/fill", red_style)
 	else:
 		health_bar.set("theme_override_styles/fill", green_style)
