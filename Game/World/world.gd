@@ -120,16 +120,20 @@ func land_player():
 func play_ending(animation_name: String):
 	print("Playing ending:", animation_name)
 
-	player.visible = false
-	player.set_physics_process(false)
+	if player:
+		player.visible = false
+		player.set_physics_process(false)
 
+	# Instantiate the ending scene
 	var ending_scene = preload("res://Endings/Endings.tscn").instantiate()
 	if not ending_scene:
 		print("Failed to instantiate Endings.tscn")
 		return
 
+	# Set which animation to play
 	ending_scene.animation_to_play = animation_name
 
+	# Ensure CanvasLayer exists
 	if not canvas_layer:
 		canvas_layer = CanvasLayer.new()
 		canvas_layer.layer = 20
@@ -138,42 +142,40 @@ func play_ending(animation_name: String):
 
 	canvas_layer.add_child(ending_scene)
 
+	# Land player and get Y position of ground
 	var ground_y = await land_player()
 	print("Ground y after landing:", ground_y)
 
-	# Get sprite frame size
-	# 1. Get the AnimatedSprite2D node from the ending scene
+	# Get AnimatedSprite2D from the scene
 	var sprite = ending_scene.get_node("AnimatedSprite2D")
-
-# 2. Get the height of the current animation frame
 	var frame_texture = sprite.sprite_frames.get_frame_texture(sprite.animation, 0)
 	var sprite_height = frame_texture.get_height()
 
-	var extra_offset = 17.0  # Adjust upward if still floating, try 10 or 12 if needed
+	# Set scale and adjust final Y position
+	var desired_scale = Vector2(1.6, 1.6)
+	ending_scene.scale = desired_scale
 
+	var extra_offset = 20.0  # tweak upward if needed
 	var final_position = Vector2(
-	get_viewport().get_visible_rect().size.x / 2,
-	ground_y - (sprite_height * sprite.scale.y / 2) + extra_offset
+		get_viewport().get_visible_rect().size.x / 2,
+		ground_y - (sprite_height * desired_scale.y / 2) + extra_offset
 	)
-
 	ending_scene.position = final_position
+	ending_scene.visible = true
 
-
-
-	ending_scene.position = final_position
+	# Optional: Debug marker to visualize ground
 	var marker = ColorRect.new()
 	marker.color = Color(1, 0, 0)
 	marker.size = Vector2(300, 2)
 	marker.position = Vector2(0, ground_y)
 	add_child(marker)
 
+	print("Ending scene added to CanvasLayer at position:", final_position, "with scale:", desired_scale)
 
 
+	
 
-	ending_scene.scale = Vector2(1, 1)
-	ending_scene.visible = true
 
-	print("Ending scene added to CanvasLayer at position:", ending_scene.position)
 
 func show_love_letter_panel():
 	print("Initiating love letter panel display")
