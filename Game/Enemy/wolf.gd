@@ -8,7 +8,7 @@ var player_in_contact = null
 func _ready():
 	get_node("AnimatedSprite2D").play("idle")
 func _physics_process(delta):
-	# 🟩🔥 FIX: Add gravity so the wolf falls naturally
+	# Add gravity so the wolf falls naturally
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
@@ -34,7 +34,7 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("idle")
 		velocity.x = 0
 
-	# 🟩🔥 FIX: Actually apply movement with velocity
+	
 	move_and_slide()
 
 
@@ -49,13 +49,13 @@ func _on_player_death_body_entered(body):
 
 func _on_player_collision_body_entered(body: Node2D) -> void:
 	if body.name == "player":
-		var is_above = body.global_position.y + 10 < global_position.y  # ✅ NEW: +10 helps fine-tune stomp check
-		var is_falling = body.velocity.y > 0  # ✅ NEW: only if falling
+		var is_above = body.global_position.y + 10 < global_position.y  # +10 helps fine-tune stomp check
+		var is_falling = body.velocity.y > 0  # only if falling
 
 		if is_above and is_falling:
-			death()  # ✅ NEW: enemy dies
+			death()  #  enemy dies
 		else:
-			player_in_contact = body  # ✅ NEW: start damage timer
+			player_in_contact = body  #  start damage timer
 			$DamageTimer.start()
 
 func _on_player_collision_body_exited(body: Node2D) -> void:

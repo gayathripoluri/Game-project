@@ -23,7 +23,7 @@ func _ready():
 
 	if timer_scene:
 		timer_scene.connect("timeout", Callable(self, "on_game_over"))
-		print("Timer connected successfully")
+		#print("Timer connected successfully")
 	else:
 		print("TimerSetup/Timer not found")
 
@@ -39,7 +39,7 @@ func connect_to_gems():
 	for gem in gems:
 		if not gem.is_connected("gem_collected", Callable(self, "_on_gem_collected")):
 			gem.connect("gem_collected", Callable(self, "_on_gem_collected"))
-			print("Connected gem_collected signal for gem at position: ", gem.position)
+			#print("Connected gem_collected signal for gem at position: ", gem.position)
 
 func _process(_delta):
 	if not player or has_triggered_end:
@@ -79,23 +79,23 @@ func check_end_condition():
 		return
 
 	var time_left = timer_scene.get_parent().time_left if timer_scene else 0
-	print("Checking end condition: gem_count =", gem_count, "time_left =", time_left, "player x =", player.global_position.x if player else "N/A")
+	#print("Checking end condition: gem_count =", gem_count, "time_left =", time_left, "player x =", player.global_position.x if player else "N/A")
 
 	if (player and player.global_position.x >= 11400) or time_left <= 0:
 		has_triggered_end = true
 		if gem_count == 5:
-			print("All 5 gems collected, triggering happy_end")
+			#print("All 5 gems collected, triggering happy_end")
 			play_ending("happy_end")
 		elif gem_count < 4:
-			print("Not enough gems, triggering sad_end (gems =", gem_count, ")")
+			#print("Not enough gems, triggering sad_end (gems =", gem_count, ")")
 			play_ending("sad_end")
 		else:
-			print("Exactly 4 gems, showing love letter panel")
+			#print("Exactly 4 gems, showing love letter panel")
 			show_love_letter_panel()
 	else:
 		get_tree().paused = false
 		player.set_physics_process(true)
-		print("No ending triggered: waiting for x >= 11500 or timer to run out")
+		#print("No ending triggered: waiting for x >= 11500 or timer to run out")
 
 func land_player():
 	if player:
@@ -108,17 +108,17 @@ func land_player():
 		if result:
 			var ground_y = result.position.y
 			player.global_position = Vector2(player.global_position.x, ground_y)
-			print("Landed player at y =", ground_y)
+			#print("Landed player at y =", ground_y)
 		else:
 			var default_ground_y = 200.0
 			player.global_position = Vector2(player.global_position.x, default_ground_y)
-			print("No ground detected, landed at default y =", default_ground_y)
+			#print("No ground detected, landed at default y =", default_ground_y)
 
 		await get_tree().create_timer(0.1).timeout
 		return player.global_position.y
 
 func play_ending(animation_name: String):
-	print("Playing ending:", animation_name)
+	#print("Playing ending:", animation_name)
 
 	if player:
 		player.visible = false
@@ -127,7 +127,7 @@ func play_ending(animation_name: String):
 	# Instantiate the ending scene
 	var ending_scene = preload("res://Endings/Endings.tscn").instantiate()
 	if not ending_scene:
-		print("Failed to instantiate Endings.tscn")
+		#print("Failed to instantiate Endings.tscn")
 		return
 
 	# Set which animation to play
@@ -138,13 +138,13 @@ func play_ending(animation_name: String):
 		canvas_layer = CanvasLayer.new()
 		canvas_layer.layer = 20
 		add_child(canvas_layer)
-		print("Created new CanvasLayer at layer:", canvas_layer.layer)
+		#print("Created new CanvasLayer at layer:", canvas_layer.layer)
 
 	canvas_layer.add_child(ending_scene)
 
 	# Land player and get Y position of ground
 	var ground_y = await land_player()
-	print("Ground y after landing:", ground_y)
+	#print("Ground y after landing:", ground_y)
 
 	# Get AnimatedSprite2D from the scene
 	var sprite = ending_scene.get_node("AnimatedSprite2D")
@@ -170,7 +170,7 @@ func play_ending(animation_name: String):
 	marker.position = Vector2(0, ground_y)
 	add_child(marker)
 
-	print("Ending scene added to CanvasLayer at position:", final_position, "with scale:", desired_scale)
+	#print("Ending scene added to CanvasLayer at position:", final_position, "with scale:", desired_scale)
 
 
 	
@@ -201,4 +201,4 @@ func _on_gem_collected():
 		gem_count += 1
 		if gem_label:
 			gem_label.text = "Gems: %d/%d" % [gem_count, total_gems]
-		print("Gem collected! Total: ", gem_count)
+		#print("Gem collected! Total: ", gem_count)

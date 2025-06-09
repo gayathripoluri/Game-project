@@ -1,80 +1,111 @@
 extends Node2D
 
-@export var enemy_scene: PackedScene  # The wolf scene to instantiate
-@export var spawn_area: Rect2 = Rect2(Vector2(0, 0), Vector2(11000, 600))  # Area where wolves can spawn
-@export var max_enemies: int =12   # Maximum number of wolves (12)
-@export var min_enemy_distance: float = 400.0  # Minimum distance between wolves
-@export var min_player_distance: float = 400.0  # Minimum distance from player
-@export var ground_y: float = 500.0  # Y-position of the ground (adjust to your game’s ground level)
+@export var enemy_scene: PackedScene
+@export var spawn_area: Rect2 = Rect2(Vector2(0, 0), Vector2(11000, 600))
+@export var max_enemies: int = 12
+@export var min_enemy_distance: float = 300.0
+@export var min_player_distance: float = 300.0
+@export var ground_y: float = 500.0
+@export var ground_check_offset: float = 50.0
 
-var active_enemies: Array = []  # Tracks spawned wolves
-var player  # Reference to the player node
+var active_enemies: Array = []
+var player
 
 func _ready():
-	# Find the player node (adjust path if different in your scene tree)
-	player = get_node("/root/World/Mobs/EnemySpawner")  # Update path as needed
+	player = get_node_or_null("/root/World/player/player")
 	if not player:
-		push_error("Player node not found! Check the node path.")
+		push_error("❌ Player node not found! Check the path.")
 		return
+
+	if not enemy_scene:
+		push_error("❌ Enemy scene not assigned! Assign it in the Inspector.")
+		return
+
 	spawn_initial_enemies()
 
 func spawn_initial_enemies():
-	# Spawn up to max_enemies wolves at the start
+	var segment_width = spawn_area.size.x / max_enemies
 	for i in range(max_enemies):
-		spawn_enemy()
+		var segment_start = spawn_area.position.x + i * segment_width
+		var segment_area = Rect2(Vector2(segment_start, spawn_area.position.y), Vector2(segment_width, spawn_area.size.y))
+		spawn_enemy_in_area(segment_area)
 
-func spawn_enemy():
-	if active_enemies.size() >= max_enemies:
-		return  # Don’t spawn if max enemies reached
-
+func spawn_enemy_in_area(area: Rect2) -> void:
 	var enemy = enemy_scene.instantiate()
-	var spawn_position = find_valid_spawn_position()
-	
-	if spawn_position != Vector2.ZERO:  # Valid position found
+	var spawn_position = find_valid_spawn_position_in_area(area)
+
+	if spawn_position != Vector2.ZERO:
 		enemy.position = spawn_position
 		get_parent().add_child.call_deferred(enemy)
 		active_enemies.append(enemy)
-		# Connect to a signal to detect enemy death (assuming enemy emits "tree_exited" when freed)
 		enemy.connect("tree_exited", Callable(self, "_on_enemy_died").bind(enemy))
+		#print("✅ Spawned enemy at:", spawn_position)
 	else:
-		# Retry spawning after a short delay if no valid position found
-		get_tree().create_timer(0.5).timeout.connect(spawn_enemy)
+		#print("❌ No valid spawn position found in area:", area)
+		await get_tree().create_timer(0.5).timeout
+		spawn_enemy_in_area(area)  # Try again in the same segment
 
-func find_valid_spawn_position() -> Vector2:
+func find_valid_spawn_position_in_area(area: Rect2) -> Vector2:
+	const MAX_ATTEMPTS = 20
 	var attempts = 0
-	const MAX_ATTEMPTS = 20  # Increased attempts for robustness
-	var spawn_position = Vector2.ZERO
 
 	while attempts < MAX_ATTEMPTS:
-		# Random x within spawn area, fixed y at ground level
-		var x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
-		spawn_position = Vector2(x, ground_y)
+		var x = randf_range(area.position.x, area.position.x + area.size.x)
+		var spawn_pos = Vector2(x, ground_y)
 
-		# Check if position is valid (no overlap with player or enemies)
-		if is_position_valid(spawn_position):
-			return spawn_position
+		if is_position_valid(spawn_pos):
+			return spawn_pos
+
 		attempts += 1
 
-	# Return Vector2.ZERO if no valid position found
 	return Vector2.ZERO
 
 func is_position_valid(spawn_pos: Vector2) -> bool:
+	# Too close to player?
 	if player and spawn_pos.distance_to(player.global_position) < min_player_distance:
 		return false
+
+	# Too close to other wolves?
 	for enemy in active_enemies:
 		if enemy and is_instance_valid(enemy) and spawn_pos.distance_to(enemy.global_position) < min_enemy_distance:
 			return false
+
+	# Check collision with terrain
 	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsPointQueryParameters2D.new()
-	query.position = spawn_pos
-	query.collision_mask = 1
-	var results = space_state.intersect_point(query, 1)
-	return results.is_empty()
+	var shape_query = PhysicsShapeQueryParameters2D.new()
+	var shape = RectangleShape2D.new()
+	shape.extents = Vector2(40, 20)
+	shape_query.shape = shape
+	shape_query.transform = Transform2D(0, spawn_pos)
+	shape_query.collide_with_areas = false
+	shape_query.collision_mask = 1
+
+	if not space_state.intersect_shape(shape_query).is_empty():
+		return false
+
+	# Ground check below wolf
+	var ray = PhysicsRayQueryParameters2D.new()
+	ray.from = spawn_pos
+	ray.to = spawn_pos + Vector2(0, ground_check_offset)
+	ray.collision_mask = 1
+	var result = space_state.intersect_ray(ray)
+
+	if result.is_empty():
+		return false
+
+	return true
 
 func _on_enemy_died(enemy):
 	if enemy in active_enemies:
 		active_enemies.erase(enemy)
-		if is_inside_tree():  # Check if the node is still in the scene tree
-			get_tree().create_timer(1.0).timeout.connect(spawn_enemy)
-		else:
-			print("EnemySpawner is no longer in the scene tree, skipping spawn.")
+		
+		if is_inside_tree() and active_enemies.size() < max_enemies:
+			await get_tree().create_timer(0.5).timeout
+
+			# ➕ Spawn enemy in a new random segment
+			var segment_width = spawn_area.size.x / max_enemies
+			var segment_index = randi() % max_enemies
+			var segment_start = spawn_area.position.x + segment_index * segment_width
+			var segment_area = Rect2(Vector2(segment_start, spawn_area.position.y), Vector2(segment_width, spawn_area.size.y))
+			
+			spawn_enemy_in_area(segment_area)

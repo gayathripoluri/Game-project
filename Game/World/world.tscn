@@ -228,6 +228,7 @@ position = Vector2(203, 436)
 [node name="EnemySpawner" type="Node2D" parent="Mobs"]
 script = ExtResource("8_eidgh")
 enemy_scene = ExtResource("7_0wqet")
+min_enemy_distance = 200.0
 
 [node name="HealthBar" type="CanvasLayer" parent="."]
 
