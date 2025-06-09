@@ -40,7 +40,17 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_qvhan")
 text = "Quit😒"
 
+[node name="Story" type="Button" parent="."]
+offset_left = 438.0
+offset_top = 595.0
+offset_right = 633.0
+offset_bottom = 641.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_qvhan")
+text = "Story?"
+
 [node name="bg" parent="." instance=ExtResource("2_qvhan")]
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Story" to="." method="_on_story_pressed"]

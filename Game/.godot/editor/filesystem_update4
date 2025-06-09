@@ -17,3 +17,6 @@ res://Main/main.tscn
 res://World/world.gd
 res://World/gem_spawner.gd
 res://assets/Gems/gems.gd
+res://Main/main.gd
+res://story.gd
+res://Main/Story.tscn

@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://yxqkdmqbbix3"]
+
+[ext_resource type="Script" uid="uid://b2nyx7o6kdorr" path="res://story.gd" id="1_ladvd"]
+
+[node name="Story" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ladvd")
+
+[node name="StoryImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 1591.0
+offset_bottom = 1005.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NavButtons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 9.0
+offset_right = 57.0
+offset_bottom = 39.0
+
+[node name="PrevButton" type="Button" parent="NavButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Prev"
+
+[node name="NextButton" type="Button" parent="NavButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Next"
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 0
+offset_left = 95.0
+offset_top = 8.0
+offset_right = 140.0
+offset_bottom = 39.0
+text = "Back
+"
+
+[connection signal="pressed" from="NavButtons/PrevButton" to="." method="_on_prev_button_pressed"]
+[connection signal="pressed" from="NavButtons/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
