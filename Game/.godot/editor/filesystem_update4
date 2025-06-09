@@ -15,3 +15,5 @@ res://Endings/Endings.tscn
 res://LoveLetterPanel/LoveLetterPanel.tscn
 res://Main/main.tscn
 res://World/world.gd
+res://World/gem_spawner.gd
+res://assets/Gems/gems.gd

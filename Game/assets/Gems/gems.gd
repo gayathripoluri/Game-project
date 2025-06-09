@@ -10,6 +10,16 @@ var velocity: Vector2 = Vector2.ZERO
 const GRAVITY: float = 300.0
 var is_on_ground: bool = false
 
+signal gem_disappeared
+
+func _start_disappear_timer():
+	var timer = $Timer
+	timer.start()
+
+func _on_Timer_timeout():
+	emit_signal("gem_disappeared")
+	queue_free()
+	
 func _ready():
 	add_to_group("gems")
 	set_size()

@@ -18,8 +18,8 @@ script = ExtResource("1_cykhp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_7pwlr")
-position = Vector2(0, -3)
-scale = Vector2(0.0221413, 0.0287356)
+position = Vector2(0.234377, -2.75)
+scale = Vector2(0.0200393, 0.0258621)
 texture = ExtResource("1_nst0a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

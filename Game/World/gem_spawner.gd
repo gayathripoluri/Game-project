@@ -3,11 +3,12 @@ extends Node2D
 @export var gem_scene: PackedScene = preload("res://assets/Gems/gems.tscn")
 
 var gem_zones = [
-	Rect2(200, 280, 100, 20),
-	Rect2(500, 280, 100, 20),
-	Rect2(800, 280, 100, 20),
-	Rect2(1000, 280, 100, 20),
-	Rect2(1200, 280, 100, 20)
+	
+	Rect2(1300, 280, 100, 20),
+	Rect2(6275, 280, 100, 20),
+	Rect2(6530, 280, 100, 20),
+	Rect2(9000, 280, 100, 20),
+	Rect2(10700, 280, 100, 20)
 ]
 
 var total_gems: int = 5
