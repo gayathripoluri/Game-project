@@ -1,11 +1,12 @@
-res://Main/main.tscn
+res://Main/Story.tscn
 res://Bg/bg-tint.gdshader
 res://Player/player-outline.gdshader
-res://assets/Gems/gem_pulse.gdshader
-res://Enemy/enemy_flash.gdshader
-res://Main/Story.tscn
 res://Enemy/wolf.gd
+res://Enemy/enemy_flash.gdshader
 res://World/enemy_spawner.gd
+res://assets/Gems/gem_pulse.gdshader
+res://story.gd
+res://Main/main.tscn
 res://Bg/bg.tscn
 res://World/world.tscn
 res://Player/player.tscn

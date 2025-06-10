@@ -21,6 +21,11 @@ func _ready():
 
 func update_panel():
 	image.texture = story_images[current_index]
+
+	# Ensure image is properly scaled and centered
+	image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	image.expand = true
+
 	prev_button.disabled = current_index == 0
 	next_button.disabled = current_index == story_images.size() - 1
 
@@ -39,3 +44,12 @@ func _on_next_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main/main.tscn")
+
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_RIGHT and current_index < story_images.size() - 1:
+			current_index += 1
+			update_panel()
+		elif event.keycode == KEY_LEFT and current_index > 0:
+			current_index -= 1
+			update_panel()
