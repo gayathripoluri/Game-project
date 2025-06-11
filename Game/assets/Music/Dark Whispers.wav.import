@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bqq6ko7eetpvj"
+path="res://.godot/imported/Dark Whispers.wav-45e56a8f7cc9339bc15791aa8bea3f07.sample"
+
+[deps]
+
+source_file="res://assets/Music/Dark Whispers.wav"
+dest_files=["res://.godot/imported/Dark Whispers.wav-45e56a8f7cc9339bc15791aa8bea3f07.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

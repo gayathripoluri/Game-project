@@ -155,7 +155,7 @@ func play_ending(animation_name: String):
 	var desired_scale = Vector2(1.6, 1.6)
 	ending_scene.scale = desired_scale
 
-	var extra_offset = 20.0  # tweak upward if needed
+	var extra_offset = 21.0  # tweak upward if needed
 	var final_position = Vector2(
 		get_viewport().get_visible_rect().size.x / 2,
 		ground_y - (sprite_height * desired_scale.y / 2) + extra_offset
