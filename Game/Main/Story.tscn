@@ -1,9 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://yxqkdmqbbix3"]
+[gd_scene load_steps=7 format=3 uid="uid://yxqkdmqbbix3"]
 
 [ext_resource type="Script" uid="uid://b2nyx7o6kdorr" path="res://story.gd" id="1_ladvd"]
 [ext_resource type="AudioStream" uid="uid://bm2tkexjekw2a" path="res://assets/Music/Story Music.mp3" id="2_aj33w"]
 
 [sub_resource type="Theme" id="Theme_aj33w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj33w"]
+bg_color = Color(0.054902, 0.388235, 0.745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvuwe"]
+bg_color = Color(0.054902, 0.388235, 0.745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqa05"]
+bg_color = Color(0.0550372, 0.389699, 0.746267, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Story" type="Control"]
 layout_mode = 3
@@ -14,6 +27,12 @@ size_flags_horizontal = 4
 theme = SubResource("Theme_aj33w")
 script = ExtResource("1_ladvd")
 
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1131.0
+offset_bottom = 651.0
+color = Color(0.0588235, 0.105882, 0.168627, 1)
+
 [node name="StoryImage" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -21,8 +40,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -7.0
+offset_left = -19.0
+offset_top = -18.0
 offset_right = 1134.0
 offset_bottom = 618.0
 grow_horizontal = 2
@@ -34,17 +53,19 @@ stretch_mode = 5
 layout_mode = 0
 offset_left = 1.0
 offset_top = 9.0
-offset_right = 57.0
+offset_right = 85.0
 offset_bottom = 39.0
 
 [node name="PrevButton" type="Button" parent="NavButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_aj33w")
 text = "Prev"
 
 [node name="NextButton" type="Button" parent="NavButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_dvuwe")
 text = "Next"
 
 [node name="BackButton" type="Button" parent="."]
@@ -54,12 +75,15 @@ offset_left = 95.0
 offset_top = 8.0
 offset_right = 140.0
 offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
+theme_override_colors/font_pressed_color = Color(0.0639815, 0.0251223, 0.00136334, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_rqa05")
 text = "Back
 "
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_aj33w")
-volume_db = 8.0
+volume_db = -2.562
 autoplay = true
 parameters/looping = true
 

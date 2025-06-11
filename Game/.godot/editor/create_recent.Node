@@ -1,3 +1,4 @@
+ColorRect
 AudioStreamPlayer2D
 CPUParticles2D
 AudioListener2D
@@ -11,4 +12,3 @@ CharacterBody2D
 Label
 TextEdit
 Sprite2D
-ColorRect

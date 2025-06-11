@@ -16,3 +16,4 @@ res://gameEnd.tscn
 res://LoveLetterPanel/LoveLetterPanel.tscn
 res://World/world.gd
 res://World/gem_spawner.gd
+res://World/TileMap.gdshader
