@@ -1,5 +1,6 @@
-res://World
+res://assets/GameOver
 res://assets/Music
+res://World
 res://assets/Music/Adventure pack 1 ogg
 res://assets/Music/Music by Pascal Belisle
 res://Main
@@ -11,7 +12,6 @@ res://LoveLetterPanel
 res://Bg
 res://Player
 res://assets/Gems
-res://assets/GameOver
 res://
 res://assets/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2
 res://assets/Enemy/Wolf/Dead

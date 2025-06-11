@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg677cyfgp0dl"]
+[gd_scene load_steps=7 format=3 uid="uid://bg677cyfgp0dl"]
 
 [ext_resource type="Script" uid="uid://p3tmu8h723wj" path="res://gameOver.gd" id="1_7a8gl"]
-[ext_resource type="Texture2D" uid="uid://b5pstp5d45n6n" path="res://assets/GameOver/Game Over Bg.png" id="1_dus1c"]
+[ext_resource type="Texture2D" uid="uid://b6whqmis3wvo4" path="res://assets/GameOver/GameOver2.png" id="2_dhodg"]
+[ext_resource type="AudioStream" uid="uid://6afk3xn1kce8" path="res://assets/Music/GameEnd Music.mp3" id="3_dhodg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7a8gl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_dus1c")
+"texture": ExtResource("2_dhodg")
 }],
 "loop": true,
 "name": &"bg",
@@ -60,6 +61,22 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_dhodg")
 text = "Quit😒
 "
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dhodg")
+volume_db = -8.125
+autoplay = true
+parameters/looping = true
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_bottom = 0.018
+offset_left = 442.0
+offset_top = 107.0
+offset_right = 798.0
+offset_bottom = 165.336
+theme_override_font_sizes/font_size = 40
+text = "Until Next Time😓"
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

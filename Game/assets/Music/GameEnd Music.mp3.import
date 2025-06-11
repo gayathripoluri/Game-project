@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6afk3xn1kce8"
+path="res://.godot/imported/GameEnd Music.mp3-b848a3dcd0aebe6f0c1b177728d878e4.mp3str"
+
+[deps]
+
+source_file="res://assets/Music/GameEnd Music.mp3"
+dest_files=["res://.godot/imported/GameEnd Music.mp3-b848a3dcd0aebe6f0c1b177728d878e4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,5 +1,6 @@
-ColorRect
+Label
 AudioStreamPlayer2D
+ColorRect
 CPUParticles2D
 AudioListener2D
 Button
@@ -9,6 +10,5 @@ Control
 AnimatedSprite2D
 CollisionShape2D
 CharacterBody2D
-Label
 TextEdit
 Sprite2D
