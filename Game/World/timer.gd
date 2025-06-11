@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var timer_label = $TimePanel/TimerLabel  # Updated path to match your scene
 @onready var timer = $Timer
-@export var total_time: float = 80.0  # Changed to 1 minute (60 seconds)
+@export var total_time: float = 70.0  # Changed to 1 minute (60 seconds)
 var time_left: float
 var is_running: bool = true
 
