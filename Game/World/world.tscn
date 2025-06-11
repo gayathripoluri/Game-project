@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3almonomnu1c"]
+[gd_scene load_steps=24 format=3 uid="uid://c3almonomnu1c"]
 
 [ext_resource type="Script" uid="uid://bso4xef7c7ymn" path="res://World/world.gd" id="1_yf0ba"]
 [ext_resource type="Texture2D" uid="uid://bnrmijhnybo1v" path="res://assets/sunny-land/assets/environment/tileset.png" id="2_eidgh"]
 [ext_resource type="Script" uid="uid://vjk4dw6ikbto" path="res://Bg/bg.gd" id="3_oe8m4"]
+[ext_resource type="Shader" uid="uid://cl4s50aulvowl" path="res://World/world.gdshader" id="4_awrha"]
 [ext_resource type="Texture2D" uid="uid://co03amee61wpm" path="res://assets/Bg/Forest.png" id="4_w47uh"]
 [ext_resource type="Texture2D" uid="uid://cng83a57hrowa" path="res://assets/Bg/Beautiful Forest.png" id="5_lo5ox"]
 [ext_resource type="PackedScene" uid="uid://btxn7a1u8aa7t" path="res://Player/player.tscn" id="6_h2aik"]
@@ -160,6 +161,16 @@ physics_layer_1/collision_layer = 1
 physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_aqk2v")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awrha"]
+shader = ExtResource("4_awrha")
+shader_parameter/darkness = 0.1
+shader_parameter/desaturation = 0.6
+shader_parameter/curse_tint = Vector4(0.1, 0.2, 0, 1)
+shader_parameter/noise_strength = 0.05
+shader_parameter/vignette_strength = 1.2
+shader_parameter/vignette_softness = 0.4
+shader_parameter/pulse_speed = 2.0
+
 [sub_resource type="Theme" id="Theme_yf0ba"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eidgh"]
@@ -186,6 +197,15 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.118866, 0.3646, 0.220266, 0.6)
 shadow_size = 2
 
+[sub_resource type="Gradient" id="Gradient_awrha"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.25283, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.25283, 0.25283, 0.25283, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_f23eu"]
+offsets = PackedFloat32Array(0, 0.532075, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.690566, 0.690566, 0.690566, 1, 1, 1, 1, 1)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_yf0ba")
 
@@ -201,6 +221,7 @@ script = ExtResource("3_oe8m4")
 motion_mirroring = Vector2(1500, 0)
 
 [node name="Back" type="Sprite2D" parent="bg/ParallaxLayer"]
+material = SubResource("ShaderMaterial_awrha")
 position = Vector2(748, 348)
 scale = Vector2(0.979167, 0.683029)
 texture = ExtResource("4_w47uh")
@@ -290,3 +311,17 @@ stream = ExtResource("13_0wqet")
 volume_db = -8.0
 autoplay = true
 max_distance = 11500.0
+
+[node name="CelebrationParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 200
+lifetime = 3.0
+one_shot = true
+preprocess = 0.2
+direction = Vector2(0, -1)
+spread = 180.0
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_awrha")
+color_initial_ramp = SubResource("Gradient_f23eu")

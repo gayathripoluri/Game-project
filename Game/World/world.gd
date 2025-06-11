@@ -84,6 +84,10 @@ func check_end_condition():
 	if (player and player.global_position.x >= 11400) or time_left <= 0:
 		has_triggered_end = true
 		if gem_count == 5:
+			if has_node("CelebrationParticles"):
+				var particles = get_node("CelebrationParticles")
+				particles.restart()
+				particles.emitting = true
 			#print("All 5 gems collected, triggering happy_end")
 			play_ending("happy_end")
 		elif gem_count < 4:

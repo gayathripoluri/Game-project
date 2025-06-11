@@ -14,3 +14,6 @@ res://assets/Gems/gems.tscn
 res://gameEnd.tscn
 res://World/gem_spawner.gd
 res://World/timer.gd
+res://LoveLetterPanel/LoveLetterPanel.tscn
+res://World/world.gdshader
+res://World/world.gd
