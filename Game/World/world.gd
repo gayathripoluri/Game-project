@@ -12,6 +12,8 @@ var has_triggered_end: bool = false
 @onready var canvas_layer = $CanvasLayer if has_node("CanvasLayer") else null
 @onready var player = $player/player if has_node("player/player") else null
 
+
+
 func _ready():
 	red_style.bg_color = Color(1, 0, 0)
 	green_style.bg_color = Color(0, 1, 0)
@@ -85,9 +87,9 @@ func check_end_condition():
 		has_triggered_end = true
 		if gem_count == 5:
 			if has_node("CelebrationParticles"):
-				var particles = get_node("CelebrationParticles")
-				particles.restart()
-				particles.emitting = true
+				$CelebrationParticles.global_position = get_viewport().get_visible_rect().size / 2
+				$CelebrationParticles.restart()
+				$CelebrationParticles.emitting = true
 			#print("All 5 gems collected, triggering happy_end")
 			play_ending("happy_end")
 		elif gem_count < 4:

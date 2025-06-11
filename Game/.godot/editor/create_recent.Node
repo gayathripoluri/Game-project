@@ -1,5 +1,5 @@
-CPUParticles2D
 AudioStreamPlayer2D
+CPUParticles2D
 AudioListener2D
 Button
 HBoxContainer
@@ -12,4 +12,3 @@ Label
 TextEdit
 Sprite2D
 ColorRect
-Node2D

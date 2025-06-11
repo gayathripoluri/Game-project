@@ -1,5 +1,6 @@
 res://Main/main.tscn
 res://Bg/bg-tint.gdshader
+res://World/world.gdshader
 res://Player/player-outline.gdshader
 res://Enemy/wolf.gd
 res://Enemy/enemy_flash.gdshader
@@ -12,8 +13,6 @@ res://Player/player.tscn
 res://Enemy/Wolf.tscn
 res://assets/Gems/gems.tscn
 res://gameEnd.tscn
-res://World/gem_spawner.gd
-res://World/timer.gd
 res://LoveLetterPanel/LoveLetterPanel.tscn
-res://World/world.gdshader
 res://World/world.gd
+res://World/gem_spawner.gd
